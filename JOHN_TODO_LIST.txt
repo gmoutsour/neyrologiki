@@ -1,0 +1,30 @@
+TODO:
+
+INSTALLATION:
+	run node.js as service
+	run mongodb as service
+	INSTALL node.js, mongoDB and source code as Windows packet.
+	
+DATABASE:
+	re-populate form by data    DONE
+	mongoose relations schema   
+	Create authorization in the backend
+	mongoose to actually connect localy
+	
+FRONTEND/ANGULAR:
+	proper From Validation and naming
+	Populate the rest of the forms.
+	Update CCS for better visual effects.
+	Reshape the top and left html sections.
+	Create authorization in the frontend.
+	Use seperate angular controlers for patient and eksetaseis.
+	Reshape the form sections ( make them use tabs) : UPDATE DIDN't LOOK GOOD. REVERT.
+
+Misc:
+	Find a way to use the angulr theme to make everything automatic.
+	reshape functionality to use restangular 
+	reshape functionality to use node-rest.js 
+	
+TOOLS:
+	Tools for MongoDB queries. : robomongo FTW.
+	
