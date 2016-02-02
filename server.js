@@ -204,17 +204,20 @@
 		
     });
 	
-/*
+
     app.get('*', function(req, res) {
-        res.sendfile('./public/working_safe.html'); // load the single view file (angular will handle the page changes on the front-end)
+		//res.sendfile('./public/page_404.html');
+		//res.json("ton mpoulo");
+		res.sendfile('./public/patients.html');
     });	
 	
-	
+/*	
 // SEND THE INDEX PAGE ON EEVERY REQUEST.
     app.get('/doctors/*', function(req, res) {
         res.sendfile('./public/doctors.html'); // load the single view file (angular will handle the page changes on the front-end)
     });	
-*/	
+*/
+	
     // listen (start app with node server.js) ======================================
     app.listen(8080);
     console.log("App listening on port 8080");
