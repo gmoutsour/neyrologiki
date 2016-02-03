@@ -890,24 +890,6 @@
 		
 	</div>
 
-
-
-	<!--
-	  <form class="form-inline" role="form" name="eksetashForm">
-		<div class="form-group">
-		  <label class="sr-only" for="exampleInputPassword2">Test</label>
-		  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Ονοματεπώνυμο" ng-model="eksetashFormData.test" required>
-		</div>
-		<div class="form-group">
-		  <label class="sr-only" for="exampleInputPassword2">No</label>
-		  <input type="number" class="form-control" id="exampleInputPassword2" placeholder="" ng-model="eksetashFormData.no" >
-		</div>
-		<button type="submit" class="btn btn-primary btn-sm" ng-click=" createEksetash(patientformData._id)">Προσθήκη::{{patientformData._id}}::::::{{show_tab}}</button>
-	  </form>
-
-	-->
-
-	
 	<!-- TABLE OF EKSETASEIS-->
 	<table class="table table-bordered"  ng-show="patientformData._id && eksetaseis.length">
 		<thead>
@@ -923,13 +905,13 @@
 			<td>lol {{ eksetash._id }}</td>
 			<td>{{ eksetash._patient }}</td>
 			<td>{{ eksetash.neyrologiki_right }}</td>
-			<td>{{ eksetash._patient }}</td>
+			<td>{{ eksetash.egkefalikes_syzigies.neyrologiki_right }}</td>
 			
 		</tr>
 		</tbody>
 	</table>
 	
-	<!-- START OF NEYROLOGIKH EKSETASH. HIDE THIS FOR NOW -->
+	<!-- START OF NEYROLOGIKH EKSETASH. -->
 	<div class="wrapper-md" name="neyrologikh_eksetash" ng-show="patientformData._id">
 
 	<div class="bg-light lter b-b wrapper-md">
@@ -982,8 +964,8 @@
 					  </tr>
 					  <tr>
 						<td><input type="checkbox" value="option3" ng-click="show_neyrologiki=!show_neyrologiki"></td>
-						<td colspan=2><input type="checkbox" value="option3" ng-click="show_neyrologiki_right=!show_neyrologiki_right" ng-model="eksetashFormData.neyrologiki_right.global"></td>
-						<td colspan=2><input type="checkbox" value="option3" ng-click="show_neyrologiki_left=!show_neyrologiki_left" ng-model="eksetashFormData.neyrologiki_left.global"></td>
+						<td colspan=2><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.global"></td>
+						<td colspan=2><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.global"></td>
 					  </tr>
 					</tbody>
 					</table>
@@ -991,19 +973,19 @@
 					<div ng-show="show_neyrologiki" class="hideByDefault">	
 					<div class="container">	
 						<div class="row">
-						<div class="col-sm-6" ng-hide="show_neyrologiki_right" class="hideByDefault"> </div>
+						<div class="col-sm-6" ng-hide="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.global" class="hideByDefault"> </div>
 					  
-						<div class="col-sm-6" ng-show="show_neyrologiki_right" class="hideByDefault">
+						<div class="col-sm-6" ng-show="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.global" class="hideByDefault">
 						  <div class="panel panel-default " >
 							<div class="panel-heading font-bold">ΔΕΞΙΑ</div>
 							
 								<div class="panel-body" name="neyrologikh_2">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" ng-model="eksetashFormData.neyrologiki_right.check_one">
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.check">
 									</div>
 									<div class="col-sm-10">
 									<label class="checkbox-inline">Οπτική οξύτητα</label>
-									<input id="slider" ui-jq="slider" ng-model="eksetashFormData.neyrologiki_right.optiki_oksitita" ui-options="{
+									<input id="slider" ui-jq="slider" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.optiki_oksitita" ui-options="{
 									  min: 0,
 									  max: 10,
 									  step: 1,
@@ -1016,7 +998,7 @@
 											Οπτικά πεδία
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.neyrologiki_right.optika_pedia">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.optika_pedia">
 										  </div>
 										</div>
 									</div>
@@ -1026,16 +1008,16 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.shmeiwseis" >
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
-							
+
 								<div class="panel-body" name="neyrologikh_3">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.check">
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
@@ -1043,21 +1025,21 @@
 										  <tr>
 											<td>Κόρες</td>
 											<td >μύση</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.kores.myhsh" ></td>
 											<td >μυδρίαση</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.kores.mydriash"></td>
 										  </tr>
 										  <tr>
 											<td>Φωτοκινητικό</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.phwtokinhtiko" ></td>
 										  </tr>
 										  <tr>
 											<td>Ανέλκυση Βλεφάρων</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.aneklysh_blefarwn" ></td>
 										  </tr>
 										  <tr>
 											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.diplwpia" ></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1068,23 +1050,23 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.shmeiwseis" >
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
-							
+
 								<div class="panel-body" name="neyrologikh_4">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.check">
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.diplwpia"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1095,34 +1077,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
-										  </div>
-										</div>
-									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
-								</div>
-								
-								<div class="panel-body" name="neyrologikh_5">
-									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
-									</div>
-									<div class="col-sm-10">
-									  <table class="table table-bordered">
-										<tbody>
-										  <tr>
-											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
-										  </tr>
-										</tbody>
-									  </table>
-									</div>
-									<div class="col-sm-10">
-										<div class="row">
-										  <div class="col-md-3">
-											Σημειώσεις
-										  </div>
-										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1131,19 +1086,46 @@
 
 								<div class="panel-body" name="neyrologikh_6">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.check" >
+									</div>
+									<div class="col-sm-10">
+									  <table class="table table-bordered">
+										<tbody>
+										  <tr>
+											<td>Διπλωπία</td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.diplwpia"></td>
+										  </tr>
+										</tbody>
+									  </table>
+									</div>
+									<div class="col-sm-10">
+										<div class="row">
+										  <div class="col-md-3">
+											Σημειώσεις
+										  </div>
+										  <div class="col-md-5">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.shmeiwseis">
+										  </div>
+										</div>
+									</div>
+									<div class="line line-dashed b-b line-lg pull-in"></div>				
+								</div>
+
+								<div class="panel-body" name="neyrologikh_5">
+									<div class="col-sm-10">
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.check">
 									</div>
 									<div class="container-fluid">
 										<div class="row">
 											<div class="col-xs-6">
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V1">
 												</div>
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V2">
 												</div>
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V3">
 												</div>
 											</div>
 											<div class="col-xs-6">
@@ -1156,26 +1138,26 @@
 
 								<div class="panel-body" name="neyrologikh_7">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.check" >
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Άνω</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.anw"></td>
 										  </tr>
 										  <tr>
 											<td>Κάτω</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.katw"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή γεύσης</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.diataraxh_geyshs"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή σάλιου-δακρύων</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.diataraxh_saliou_dakrywn"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1186,7 +1168,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1195,35 +1177,35 @@
 
 								<div class="panel-body" name="neyrologikh_8">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.check" >
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Νυσταγμός</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.nystagmos.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.nystagmos.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Romberg</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.romberg.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.romberg.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Unterberger</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.unterberger.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.unterberger.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Rinne</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.rinne.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.rinne.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Weber</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.weber.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.weber.shmeiwseis"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1234,7 +1216,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1243,7 +1225,7 @@
 
 								<div class="panel-body" name="neyrologikh_9">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1251,35 +1233,35 @@
 										<tbody>
 										  <tr>
 											<td>Διαταραχή ανύψωσης μαλθακής υπερώας</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_anypsews_malthakis_yperwas.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_anypsews_malthakis_yperwas.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή θέσης σταφυλής</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_theshs_stafylhs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_theshs_stafylhs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή κατάποσης</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_kataposhs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_kataposhs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή φώνησης</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_fwnhshs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_fwnhshs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή αισθητικότητας φάρυγγα</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_aisthhtikotitas_farygga.check"></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_aisthhtikotitas_farygga.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Αντανακλαστικό φάρυγγα</td>
 											<td ><label class="col-sm-2 control-label">κ.φ.</label></td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.antanaklastiko_farygga.k_f"></td>
 											<td ><label class="col-sm-2 control-label">Όχι</label></td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.antanaklastiko_farygga.oxi"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1290,16 +1272,16 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.shmeiwseis">
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
 
-								<div class="panel-body" name="neyrologikh_10">
+								<div class="panel-body" name="neyrologikh_10" >
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_10.check">
 									</div>
 									<div class="col-sm-10">
 										<div class="row">
@@ -1307,7 +1289,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_10.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1316,7 +1298,7 @@
 
 								<div class="panel-body" name="neyrologikh_11">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1325,26 +1307,26 @@
 										  <tr>
 											<td>Στερνοκλ/δής</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.k_f" ></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.oxi" ></td>
 										  </tr>
 										  <tr>
 											<td colspan=3></td>
 											<td>Ατροφία</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.atrofia" ></td>
 										  </tr>
 										  <tr>
 											<td>Τραπεζοειδής</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.k_f"></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.oxi"></td>
 										  </tr>
 										  <tr>
 											<td colspan=3></td>
 											<td>Ατροφία</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.atrofia"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1355,7 +1337,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1364,7 +1346,7 @@
 
 								<div class="panel-body" name="neyrologikh_12">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1373,9 +1355,9 @@
 										  <tr>
 											<td>Θέση γλώσσας</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.thesh_glwssas.k_f"></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.thesh_glwssas.oxi"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1386,7 +1368,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1396,17 +1378,17 @@
 						  </div>
 						</div>
 
-						<div class="col-sm-6" ng-show="show_neyrologiki_left" class="hideByDefault">
+						<div class="col-sm-6" ng-show="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.global" class="hideByDefault">
 						  <div class="panel panel-default " >
 							<div class="panel-heading font-bold">ΑΡΙΣΤΕΡΗ</div>
 							
 								<div class="panel-body" name="neyrologikh_2">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.check">
 									</div>
 									<div class="col-sm-10">
 									<label class="checkbox-inline">Οπτική οξύτητα</label>
-									<input id="slider" ui-jq="slider" ui-options="{
+									<input id="slider" ui-jq="slider" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.optiki_oksitita" ui-options="{
 									  min: 0,
 									  max: 10,
 									  step: 1,
@@ -1419,7 +1401,7 @@
 											Οπτικά πεδία
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.optika_pedia">
 										  </div>
 										</div>
 									</div>
@@ -1429,16 +1411,16 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.shmeiwseis" >
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
-							
+
 								<div class="panel-body" name="neyrologikh_3">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.check">
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
@@ -1446,21 +1428,21 @@
 										  <tr>
 											<td>Κόρες</td>
 											<td >μύση</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.kores.myhsh" ></td>
 											<td >μυδρίαση</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.kores.mydriash"></td>
 										  </tr>
 										  <tr>
 											<td>Φωτοκινητικό</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.phwtokinhtiko" ></td>
 										  </tr>
 										  <tr>
 											<td>Ανέλκυση Βλεφάρων</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.aneklysh_blefarwn" ></td>
 										  </tr>
 										  <tr>
 											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.diplwpia" ></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1471,23 +1453,23 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_3.shmeiwseis" >
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
-							
+
 								<div class="panel-body" name="neyrologikh_4">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.check">
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.diplwpia"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1498,34 +1480,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
-										  </div>
-										</div>
-									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
-								</div>
-								
-								<div class="panel-body" name="neyrologikh_5">
-									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
-									</div>
-									<div class="col-sm-10">
-									  <table class="table table-bordered">
-										<tbody>
-										  <tr>
-											<td>Διπλωπία</td>
-											<td colspan=4><input type="checkbox" value="option3" ></td>
-										  </tr>
-										</tbody>
-									  </table>
-									</div>
-									<div class="col-sm-10">
-										<div class="row">
-										  <div class="col-md-3">
-											Σημειώσεις
-										  </div>
-										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_4.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1534,19 +1489,46 @@
 
 								<div class="panel-body" name="neyrologikh_6">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.check" >
+									</div>
+									<div class="col-sm-10">
+									  <table class="table table-bordered">
+										<tbody>
+										  <tr>
+											<td>Διπλωπία</td>
+											<td colspan=4><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.diplwpia"></td>
+										  </tr>
+										</tbody>
+									  </table>
+									</div>
+									<div class="col-sm-10">
+										<div class="row">
+										  <div class="col-md-3">
+											Σημειώσεις
+										  </div>
+										  <div class="col-md-5">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_6.shmeiwseis">
+										  </div>
+										</div>
+									</div>
+									<div class="line line-dashed b-b line-lg pull-in"></div>				
+								</div>
+
+								<div class="panel-body" name="neyrologikh_5">
+									<div class="col-sm-10">
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.check">
 									</div>
 									<div class="container-fluid">
 										<div class="row">
 											<div class="col-xs-6">
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V1">
 												</div>
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V2">
 												</div>
 												<div class="row">
-												<input type="checkbox" value="option3" >
+												<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_5.V3">
 												</div>
 											</div>
 											<div class="col-xs-6">
@@ -1559,26 +1541,26 @@
 
 								<div class="panel-body" name="neyrologikh_7">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.check" >
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Άνω</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.anw"></td>
 										  </tr>
 										  <tr>
 											<td>Κάτω</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.katw"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή γεύσης</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.diataraxh_geyshs"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή σάλιου-δακρύων</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.diataraxh_saliou_dakrywn"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1589,7 +1571,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_7.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1598,35 +1580,35 @@
 
 								<div class="panel-body" name="neyrologikh_8">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.check" >
 									</div>
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
 										  <tr>
 											<td>Νυσταγμός</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.nystagmos.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.nystagmos.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Romberg</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.romberg.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.romberg.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Unterberger</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.unterberger.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.unterberger.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Rinne</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.rinne.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.rinne.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Weber</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.weber.check" ></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.weber.shmeiwseis"></td>
 										  </tr>
 										</tbody>
 									  </table>
@@ -1637,7 +1619,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_8.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1646,7 +1628,7 @@
 
 								<div class="panel-body" name="neyrologikh_9">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1654,35 +1636,35 @@
 										<tbody>
 										  <tr>
 											<td>Διαταραχή ανύψωσης μαλθακής υπερώας</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_anypsews_malthakis_yperwas.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_anypsews_malthakis_yperwas.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή θέσης σταφυλής</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_theshs_stafylhs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_theshs_stafylhs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή κατάποσης</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_kataposhs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_kataposhs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή φώνησης</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td colspan=3><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_fwnhshs.check"></td>
+											<td colspan=3><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_fwnhshs.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Διαταραχή αισθητικότητας φάρυγγα</td>
-											<td ><input type="checkbox" value="option3" ></td>
-											<td ><input type="text" class="form-control" placeholder=""></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_aisthhtikotitas_farygga.check"></td>
+											<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.diataraxi_aisthhtikotitas_farygga.shmeiwseis"></td>
 										  </tr>
 										  <tr>
 											<td>Αντανακλαστικό φάρυγγα</td>
 											<td ><label class="col-sm-2 control-label">κ.φ.</label></td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.antanaklastiko_farygga.k_f"></td>
 											<td ><label class="col-sm-2 control-label">Όχι</label></td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.antanaklastiko_farygga.oxi"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1693,16 +1675,16 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.shmeiwseis">
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
 								</div>
 
-								<div class="panel-body" name="neyrologikh_10">
+								<div class="panel-body" name="neyrologikh_10" >
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_10.check">
 									</div>
 									<div class="col-sm-10">
 										<div class="row">
@@ -1710,7 +1692,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_10.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1719,7 +1701,7 @@
 
 								<div class="panel-body" name="neyrologikh_11">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1728,26 +1710,26 @@
 										  <tr>
 											<td>Στερνοκλ/δής</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.k_f" ></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.oxi" ></td>
 										  </tr>
 										  <tr>
 											<td colspan=3></td>
 											<td>Ατροφία</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.sternokl.atrofia" ></td>
 										  </tr>
 										  <tr>
 											<td>Τραπεζοειδής</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.k_f"></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.oxi"></td>
 										  </tr>
 										  <tr>
 											<td colspan=3></td>
 											<td>Ατροφία</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.trapezoeidhs.atrofia"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1758,7 +1740,7 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.shmeiwseis">
 										  </div>
 										</div>
 									</div>
@@ -1767,7 +1749,7 @@
 
 								<div class="panel-body" name="neyrologikh_12">
 									<div class="col-sm-10">
-									<input type="checkbox" value="option3" >
+									<input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.check">
 									</div>
 									
 									<div class="col-sm-10">
@@ -1776,9 +1758,9 @@
 										  <tr>
 											<td>Θέση γλώσσας</td>
 											<td>κ.φ.</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.thesh_glwssas.k_f"></td>
 											<td>όχι</td>
-											<td ><input type="checkbox" value="option3" ></td>
+											<td ><input type="checkbox" value="option3" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.thesh_glwssas.oxi"></td>
 										  </tr>
 									  </tbody>
 									  </table>
@@ -1789,11 +1771,13 @@
 											Σημειώσεις
 										  </div>
 										  <div class="col-md-5">
-											<input type="text" class="form-control" placeholder="">
+											<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.shmeiwseis">
 										  </div>
 										</div>
 									</div>
 									<div class="line line-dashed b-b line-lg pull-in"></div>				
+								</div>
+								
 								</div>
 								
 						  </div>

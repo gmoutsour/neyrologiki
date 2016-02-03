@@ -1,0 +1,14 @@
+Install mongodb
+Install mongoDB as windows service:
+	cmd as Administrator:
+	mongod --dbpath=D:\mongodb --logpath=D:\mongodb\log.txt --install
+	
+Install node as windows service:
+	npm install to get all node-packages. ( will be included in the final product)
+	cmd as Administrator:
+	nssm install neyrologiki
+	Choose C:\FULL\path\node_bat.bat to install service
+	
+Run services to check the validity of installation.
+Start services and check the output of : http://127.0.0.1:8080/whatever
+	
