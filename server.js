@@ -216,8 +216,33 @@
 		});	
 		
     });
-	
 
+    // delete an eksetash and return the rest of eksetaseis that belong to a patient.
+    app.delete('/api/eksetaseis/by_id/:eksetash_id/:patient_id', function(req, res) {
+
+		Eksetash.findById(req.params.eksetash_id, function(err, eksetash) {
+		if (err) throw err;
+		  // delete him
+		  eksetash.remove(function(err) {
+			if (err) throw err;
+
+            // get and return all the eksetaseis after you create another
+			Eksetash.find( {'_patient' : req.params.patient_id} , function(err, eksetaseis) {
+			if (err) throw err;
+			// show the one user
+			console.log("BRHKA TIS EKSETASEIS " + eksetaseis);
+			res.json(eksetaseis); // return all patients in JSON format
+			});			
+			
+		  });
+  
+		});		
+	
+    });
+
+
+
+	
     app.get('*', function(req, res) {
 		//res.sendfile('./public/page_404.html');
 		//res.json("ton mpoulo");

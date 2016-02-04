@@ -39,6 +39,7 @@
 	{
 		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
 		hmeromhnia : Date,
+		shmeiwseis : String,
 		egkefalikes_syzigies : {
 			global : Boolean ,
 			neyrologiki_right : {

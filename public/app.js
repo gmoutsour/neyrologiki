@@ -137,6 +137,17 @@
 		$scope.eksetashFormData ={};
     };		
 
+    // get all eksetaseis 
+    $scope.delete_single_eksetash = function(eksetash_id,patient_id) {
+        $http.delete('/api/eksetaseis/by_id/'+eksetash_id+'/'+patient_id)
+            .success(function(data) {
+                $scope.eksetaseis = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
 
     $scope.setTab = function(newValue){
 	  $scope.show_tab = newValue;
