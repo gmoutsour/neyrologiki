@@ -910,8 +910,8 @@
 			<tr ng-repeat="eksetash in eksetaseis" > 
 				<td>{{ eksetash.hmeromhnia |date : 'dd/MM/yyyy' }}</td>
 				<td colspan=2>{{ eksetash.shmeiwseis }}</td>
-				<td>::: {{eksetash._id}}<button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="get_single_eksetash(eksetash._id)">Αναλυτικά</button></td>
-				<td>:::{{eksetash._patient}}<button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="delete_single_eksetash(eksetash._id, eksetash._patient)">Διαγραφή</button></td>
+				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="get_single_eksetash(eksetash._id)">Αναλυτικά</button></td>
+				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="delete_single_eksetash(eksetash._id, eksetash._patient)">Διαγραφή</button></td>
 			</tr>
 			</tbody>
 		</table>
@@ -950,7 +950,7 @@
 				
 			<div class="container" name="eksetash_content">
 			
-				<h2 ng-show="!isTabSet(100) " >Αντικειμενική νευρολογική Εξέταση:</h2>
+				<h2 >Αντικειμενική νευρολογική Εξέταση:</h2>
 				
 				<div name="egkefalikes_syzhgies" ng-show="isTabSet(1)">
 					<h3>Εγκεφαλικές συζυγίες:</h3>            
@@ -2023,13 +2023,13 @@
 						<tbody>
 						  <tr>
 							<td>Άνω άκρα</td>
-							<td ><input type="text" class="form-control" placeholder=""></td>
-							<td ><input type="text" class="form-control" placeholder=""></td>
+							<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.aisthhtikothta.anw_akra.epipolhs"></td>
+							<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.aisthhtikothta.anw_akra.en_tw_bathei"></td>
 						  </tr>
 						  <tr>
 							<td>Κάτω άκρα</td>
-							<td ><input type="text" class="form-control" placeholder=""></td>
-							<td ><input type="text" class="form-control" placeholder=""></td>
+							<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.aisthhtikothta.katw_akra.epipolhs"></td>
+							<td ><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.aisthhtikothta.katw_akra.en_tw_bathei"></td>
 						  </tr>
 						</tbody>
 					</table>
@@ -2037,21 +2037,20 @@
 
 				<div name= "loipa" ng-show="isTabSet(7)">
 				<h3>Λοιπα:</h3>
-
 					<div class="col-sm-5">
 					<table class="table table-bordered">
 						<tbody>
 						  <tr>
 							<td>Ορθοκυστικές διαταραχές</td>
-							<td ><input type="checkbox" value=""></td>
+							<td ><input type="checkbox" value="" ng-model="eksetashFormData.loipa.orthokystikes_diataraxes" ></td>
 						  </tr>
 						  <tr>
 							<td>Επίπεδο συνείδησης: κ.φ</td>
-							<td ><input type="checkbox" value=""></td>
+							<td ><input type="checkbox" value="" ng-model="eksetashFormData.loipa.epipedo_syneidhshs"></td>
 						  </tr>
 						  <tr>
 							<td>Ανώτερες νοητικές λειτουργίες: κ.φ</td>
-							<td ><input type="checkbox" value=""></td>
+							<td ><input type="checkbox" value="" ng-model="eksetashFormData.loipa.anwteres_nohtikes_leitourgies"></td>
 						  </tr>
 						</tbody>
 					</table>

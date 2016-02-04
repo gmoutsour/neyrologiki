@@ -300,11 +300,21 @@
 			global : Boolean ,
 		},
 		aisthhtikothta : {
-			global : Boolean ,
+			anw_akra : {
+				epipolhs : String ,
+				en_tw_bathei : String
+			},
+			katw_akra : {
+				epipolhs : String ,
+				en_tw_bathei : String
+			}
 		},
 		loipa : {
-			global : Boolean ,
+			orthokystikes_diataraxes : Boolean ,
+			epipedo_syneidhshs : Boolean ,
+			anwteres_nohtikes_leitourgies : Boolean 
 		}
+		
 	});
 
 	
