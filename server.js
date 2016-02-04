@@ -175,6 +175,19 @@
 
     });
 
+	
+	// get single Eksetash by id.
+    app.get('/api/eksetaseis/by_id/:eksetash_id', function(req, res) {
+		
+		Eksetash.findById( req.params.eksetash_id , function(err, eksetash) {
+		if (err) throw err;
+		// show the one user
+		console.log("BRHKA TIS EKSETASEIS " + eksetash);
+		res.json(eksetash); // return all patients in JSON format
+		});		
+
+    });
+	
     // create eksetash that belongs to a patient
     app.post('/api/eksetaseis/:patient_id', function(req, res) {
 		console.log("ADDING EKSETASH FOR" + req.params.patient_id);

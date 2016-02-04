@@ -104,13 +104,28 @@
                 console.log('Error: ' + data);
             });
     };	
+
+    // get a single patient after checking it
+    $scope.get_single_eksetash = function(id) {
+        $http.get('/api/eksetaseis/by_id/' + id)
+            .success(function(data) {
+                $scope.eksetashFormData = data;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
 	
     // when submitting the add form, send the text to the node API
     $scope.createEksetash = function(id) {
-		alert($scope.eksetashFormData);
+		// Fix in case we want to add a new eksetash by using data from an existing one.
+		delete $scope.eksetashFormData._id;
+		$scope.eksetashFormData.hmeromhnia = new Date();  
         $http.post('/api/eksetaseis/'+id, $scope.eksetashFormData)
             .success(function(data) {
 				$scope.eksetaseis = data;
+				$scope.eksetashFormData ={};
+
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -118,6 +133,9 @@
 			
     };		
 
+    $scope.cancelEksetash = function(id) {
+		$scope.eksetashFormData ={};
+    };		
 
 
     $scope.setTab = function(newValue){

@@ -38,6 +38,7 @@
 	var eksetashSchema = new Schema(
 	{
 		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
+		hmeromhnia : Date,
 		egkefalikes_syzigies : {
 			global : Boolean ,
 			neyrologiki_right : {
