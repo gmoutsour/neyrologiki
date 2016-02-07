@@ -3,10 +3,10 @@
 <head>
 
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
-	
+
 
   <meta charset="utf-8" />
-  <title>Πελατολόγιο Ασθενών</title>
+  <title>Αρχείο Ασθενών</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="css/font.css" type="text/css" />
@@ -56,7 +56,7 @@
         <ul class="nav navbar-nav hidden-sm">
           <li class="dropdown pos-stc">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <span>Mega</span> 
+              <span>Mega</span>
               <span class="caret"></span>
             </a>
             <div class="dropdown-menu wrapper w-full bg-white">
@@ -299,7 +299,7 @@
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
                 <span class="clear">
                   <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">John.Smith</strong> 
+                    <strong class="font-bold text-lt">John.Smith</strong>
                     <b class="caret"></b>
                   </span>
                   <span class="text-muted text-xs block">Art Director</span>
@@ -346,7 +346,7 @@
                 <span>Navigation</span>
               </li>
               <li>
-                <a href class="auto">      
+                <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -386,7 +386,7 @@
                 <span>Components</span>
               </li>
               <li>
-                <a href class="auto">      
+                <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -415,7 +415,7 @@
                     <a href="layout_boxed.html">
                       <span>Boxed layout</span>
                     </a>
-                  </li>      
+                  </li>
                 </ul>
               </li>
               <li>
@@ -608,9 +608,9 @@
 
               <li class="line dk hidden-folded"></li>
 
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Your Stuff</span>
-              </li>  
+              </li>
               <li>
                 <a href="page_profile.html">
                   <i class="icon-user icon text-success-lter"></i>
@@ -663,23 +663,23 @@
 
         <!-- HEADER AND patient COUNT -->
         <div class="jumbotron text-center">
-            <h3>Πελατολόγιο <span class="label label-info">Σύνολο Πελατών: {{ patients.length }}</span></h3>
+            <h3>Αρχείο <span class="label label-info">Σύνολο Ασθενών: {{ patients.length }}</span></h3>
         </div>
 
         <!-- PATIENTS LIST -->
         <div id="patient-list" class="row">
 			<form>
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Αναζήτηση Πελατών</label>
+				  <label class="col-sm-2 control-label">Αναζήτηση Ασθενών</label>
 				  <div class="col-sm-2">
-					<input type="text" class="form-control input-sm " placeholder="" ng-model="tablesearch.text">                        
+					<input type="text" class="form-control input-sm " placeholder="" ng-model="tablesearch.text">
 				  </div>
 				  <div class="col-sm-2">
-					<button type="submit" class="btn btn-primary btn-sm" ng-click="show_add_patient=true" >Προσθήκη Πελάτη</button>
+					<button type="submit" class="btn btn-primary btn-sm" ng-click="show_add_patient=true" >Προσθήκη Ασθενή</button>
 				  </div>
 				</div>
 			</form>
-			
+
 			<!-- LOOP OVER THE patientS IN $scope.patients -->
 			<table class="table table-bordered">
 				<thead>
@@ -694,7 +694,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1"> 
+				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1">
 					<td>{{ patient.hmeromhnia_eggrafhs |date : 'dd/MM/yyyy' }}</td>
 					<td>{{ patient.onomateponymo}}</td>
 					<td>{{ patient.hmeromhnia_gennhshs |date : 'dd/MM/yyyy' }}</td>
@@ -707,11 +707,11 @@
 			</table>
 		</div>
     </div>
-	
+
 	<div class="panel panel-default hideByDefault" name="asthenis_stoixeia" ng-show="show_add_patient">
-	
+
 		<div class="panel-body" name="basika_stoixeia" style="border: 1px solid #888; ">
-			<div class="panel-heading font-bold">                  
+			<div class="panel-heading font-bold">
 			  Βασικά Στοιχεία
 			</div>
 		  <form class="form-inline" role="form" name="patientForm">
@@ -738,14 +738,14 @@
 			</div>
 			<button type="submit" class="btn btn-primary btn-sm" ng-hide="patientformData._id" ng-click=" patientForm.$valid && createPatient()">Προσθήκη</button>
 			<button type="submit" class="btn btn-primary btn-sm" ng-show="patientformData._id" ng-click=" patientForm.$valid && updatePatient(patientformData._id)">Αποθήκευση</button>
-			
+
 			<button type="submit" class="btn btn-default btn-sm" ng-click="cancelPatient()" >Ακύρωση</button>
 		  </form>
 		</div>
 
 		<div style="border: 1px solid #888; ">
 		<div class="panel panel-default"  name="atomiko_istoriko">
-			<div class="panel-heading font-bold">                  
+			<div class="panel-heading font-bold">
 			  Ατομικό Ιστορικό
 			</div>
 			<div class="col-sm-10">
@@ -808,48 +808,48 @@
 						<div class="form-group">
 						  <label class="col-sm-2 control-label">Άλλες</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.alles">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.alles">
 						  </div>
 						</div>
-						
+
 						<div class="form-group">
 						  <label class="col-sm-2 control-label"> 1</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako1">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako1">
 						  </div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-2 control-label"> 2</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako2">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako2">
 						  </div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-2 control-label"> 3</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako3">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako3">
 						  </div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-2 control-label"> 4</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako4">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako4">
 						  </div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-2 control-label"> 5</label>
 						  <div class="col-sm-10">
-							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako5">                        
+							<input type="text" class="form-control " ng-model="patientformData.atomika.pathiseis.farmako5">
 						  </div>
 						</div>
 
 					</div>
 					</div>
-					
+
 					</div>
 				  </div>
 				</div>
-				
+
 			  </div>
 		</div>
 
@@ -864,25 +864,25 @@
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Μητέρα</label>
 				  <div class="col-sm-10">
-					<input type="text" class="form-control ">                        
+					<input type="text" class="form-control ">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Πατέρας</label>
 				  <div class="col-sm-10">
-					<input type="text" class="form-control ">                        
+					<input type="text" class="form-control ">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Αδέρφια</label>
 				  <div class="col-sm-10">
-					<input type="text" class="form-control ">                        
+					<input type="text" class="form-control ">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Άλλοι</label>
 				  <div class="col-sm-10">
-					<input type="text" class="form-control ">                        
+					<input type="text" class="form-control ">
 				  </div>
 				</div>
 			  </div>
@@ -907,7 +907,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="eksetash in eksetaseis" > 
+			<tr ng-repeat="eksetash in eksetaseis" >
 				<td>{{ eksetash.hmeromhnia |date : 'dd/MM/yyyy' }}</td>
 				<td colspan=2>{{ eksetash.shmeiwseis }}</td>
 				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="get_single_eksetash(eksetash._id)">Αναλυτικά</button></td>
@@ -916,19 +916,19 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<!-- START OF NEYROLOGIKH EKSETASH. -->
 	<div class="wrapper-md" name="neyrologikh_eksetash" ng-show="patientformData._id" style="border: 1px solid #888; ">
 
 	<div class="bg-light lter b-b wrapper-md">
 	  <h1 class="m-n font-thin h3">Νευρολογική Εξέταση</h1>
 	</div>
-	
+
 	<form class="form-inline" role="form" name="eksetashForm">
 		<button type="submit" class="btn btn-primary btn-sm" ng-click=" createEksetash(patientformData._id)">Προσθήκη</button>
 		<button type="submit" class="btn btn-default btn-sm" ng-click=" cancelEksetash(patientformData._id)">Καθαρισμός</button>
 		<input type="text"  ng-model="eksetashFormData.shmeiwseis" placeholder="Περίληψη">
-		  
+
 		<section class="tab" >
 		<!--<section class="tab" ng-controller="TabController as tab"> -->
 			<ul class="nav nav-pills">
@@ -947,13 +947,13 @@
 			  <li ng-class="{ active: isTabSet(7) }">
 				<a href ng-click="setTab(7)">Λοιπά</a></li>
 			</ul>
-				
+
 			<div class="container" name="eksetash_content">
-			
+
 				<h2 >Αντικειμενική νευρολογική Εξέταση:</h2>
-				
+
 				<div name="egkefalikes_syzhgies" ng-show="isTabSet(1)">
-					<h3>Εγκεφαλικές συζυγίες:</h3>            
+					<h3>Εγκεφαλικές συζυγίες:</h3>
 					<table class="table table-bordered">
 					<thead>
 					  <tr>
@@ -975,16 +975,16 @@
 					  </tr>
 					</tbody>
 					</table>
-			  
-					<div ng-show="eksetashFormData.egkefalikes_syzigies.global" class="hideByDefault">	
-					<div class="container">	
+
+					<div ng-show="eksetashFormData.egkefalikes_syzigies.global" class="hideByDefault">
+					<div class="container">
 						<div class="row">
 						<div class="col-sm-6" ng-hide="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.global" class="hideByDefault"> </div>
-					  
+
 						<div class="col-sm-6" ng-show="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.global" class="hideByDefault">
 						  <div class="panel panel-default " >
 							<div class="panel-heading font-bold">ΔΕΞΙΑ</div>
-							
+
 								<div class="panel-body" name="neyrologikh_2">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_2.check">
@@ -997,7 +997,7 @@
 									  step: 1,
 									  value: 5
 									}" class="slider slider-horizontal form-control" type="text">
-									</div>			
+									</div>
 									<div class="col-sm-10">
 										<div class="row">
 										  <div class="col-md-3">
@@ -1018,7 +1018,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_3">
@@ -1060,7 +1060,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_4">
@@ -1087,7 +1087,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_6">
@@ -1114,7 +1114,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_5">
@@ -1178,7 +1178,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_8">
@@ -1226,14 +1226,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_9">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_9.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1282,7 +1282,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_10" >
@@ -1299,14 +1299,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_11">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_11.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1347,14 +1347,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_12">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_right.field_12.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1378,16 +1378,16 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
-								
+
 						  </div>
 						</div>
 
 						<div class="col-sm-6" ng-show="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.global" class="hideByDefault">
 						  <div class="panel panel-default " >
 							<div class="panel-heading font-bold">ΑΡΙΣΤΕΡΗ</div>
-							
+
 								<div class="panel-body" name="neyrologikh_2">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.field_2.check">
@@ -1400,7 +1400,7 @@
 									  step: 1,
 									  value: 5
 									}" class="slider slider-horizontal form-control" type="text">
-									</div>			
+									</div>
 									<div class="col-sm-10">
 										<div class="row">
 										  <div class="col-md-3">
@@ -1421,7 +1421,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_3">
@@ -1463,7 +1463,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_4">
@@ -1490,7 +1490,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_6">
@@ -1517,7 +1517,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_5">
@@ -1581,7 +1581,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_8">
@@ -1629,14 +1629,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_9">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.field_9.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1685,7 +1685,7 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_10" >
@@ -1702,14 +1702,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_11">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.field_11.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1750,14 +1750,14 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
 
 								<div class="panel-body" name="neyrologikh_12">
 									<div class="col-sm-10">
 									<input type="checkbox"  ng-model="eksetashFormData.egkefalikes_syzigies.neyrologiki_left.field_12.check">
 									</div>
-									
+
 									<div class="col-sm-10">
 									  <table class="table table-bordered">
 										<tbody>
@@ -1781,16 +1781,16 @@
 										  </div>
 										</div>
 									</div>
-									<div class="line line-dashed b-b line-lg pull-in"></div>				
+									<div class="line line-dashed b-b line-lg pull-in"></div>
 								</div>
-								
+
 								</div>
-								
+
 						  </div>
 						</div>
-						
+
 					  </div>
-					</div>  
+					</div>
 
 				</div>
 
@@ -1799,9 +1799,9 @@
 				</div>
 
 				<div name= "myikh_atrofia" ng-show="isTabSet(3)">
-				<h3>Μυϊκή ατροφία:</h3><input type="checkbox"  ng-click="show_myikh_atrofia=!show_myikh_atrofia"> 
+				<h3>Μυϊκή ατροφία:</h3><input type="checkbox"  ng-click="show_myikh_atrofia=!show_myikh_atrofia">
 
-					<div ng-show="show_myikh_atrofia" class="hideByDefault" name="myikh_atrofia_basic">	
+					<div ng-show="show_myikh_atrofia" class="hideByDefault" name="myikh_atrofia_basic">
 
 							<div class="panel-body" name="myikh_atrofia_1">
 								<div class="col-sm-10">
@@ -1842,7 +1842,7 @@
 								  </tbody>
 								  </table>
 								</div>
-								<div class="line line-dashed b-b line-lg pull-in"></div>				
+								<div class="line line-dashed b-b line-lg pull-in"></div>
 							</div>
 					</div>
 
@@ -1912,7 +1912,7 @@
 							<td ><input type="checkbox"  ></td>
 							<td ><input type="checkbox"  ></td>
 						  </tr>
-						  
+
 						</tbody>
 					  </table>
 				</div>
@@ -1947,8 +1947,8 @@
 										<input type="text" class="form-control" placeholder="">
 									  </div>
 									</div>
-								</div>			
-							</td> 
+								</div>
+							</td>
 						  </tr>
 						  <tr>
 							<td>ΑΡ</td>
@@ -1964,14 +1964,14 @@
 										<input type="text" class="form-control" placeholder="">
 									  </div>
 									</div>
-								</div>			
-							</td> 
+								</div>
+							</td>
 						  </tr>
 						</tbody>
 					  </table>
 
 				<div name= "antanaklastika_2">TODO
-				</div>	  
+				</div>
 
 				<div name= "antanaklastika_3">
 
@@ -2006,7 +2006,7 @@
 						</tbody>
 					  </table>
 
-				</div>	  
+				</div>
 
 				</div>
 
@@ -2058,7 +2058,7 @@
 				</div>
 
 			<div class="line line-dashed b-b line-lg pull-in" name="spacer_div"></div>
-				
+
 				<div class="form-group" ng-show="tab.isSet(7)" >
 				  <label class="col-sm-2 control-label">Σημειώσεις</label>
 				  <div class="col-sm-10">
@@ -2066,7 +2066,7 @@
 					  <div class="btn-group dropdown" dropdown>
 						<a class="btn btn-default" dropdown-toggle tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
 						<ul class="dropdown-menu">
-						  <li><a href data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+						  <li><a href data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
 						  <li><a href data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
 						  <li><a href data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
 					  </div>
@@ -2108,7 +2108,7 @@
 						</div>
 						<a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
 					  </div>
-					  
+
 					  <div class="btn-group">
 						<a class="btn btn-default" tooltip="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
 						<input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px" />
@@ -2144,10 +2144,10 @@
 
 
 </div>
-	
+
 </div>
   <!-- /content -->
-  
+
 
 
 <script src="js/bootstrap.js"></script>
