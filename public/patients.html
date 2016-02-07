@@ -659,7 +659,7 @@
 
 <!-- Content of Pelates -->
 <div ng-controller="patientController">
-    <div class="container" name="synolo_asthenwn">
+    <div class="container" name="synolo_asthenwn" ng-show="!show_add_patient">
 
         <!-- HEADER AND patient COUNT -->
         <div class="jumbotron text-center">
@@ -667,7 +667,7 @@
         </div>
 
         <!-- PATIENTS LIST -->
-        <div id="patient-list" class="row">
+        <div id="patient-list" class="row" >
 			<form>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Αναζήτηση Ασθενών</label>
