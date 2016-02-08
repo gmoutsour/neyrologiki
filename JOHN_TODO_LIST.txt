@@ -1,30 +1,31 @@
 TODO:
 
 INSTALLATION:
-	run node.js as service
-	run mongodb as service
-	INSTALL node.js, mongoDB and source code as Windows packet.
+	run node.js as service  											DONE
+	run mongodb as service												DONE
+	INSTALL node.js, mongoDB and source code as Windows packet. 		LOW-PRIORITY
 	
 DATABASE:
-	re-populate form by data    DONE
-	mongoose relations schema   
-	Create authorization in the backend
-	mongoose to actually connect localy
+	re-populate form by data    										DONE
+	mongoose relations schema     										DONE
+	Create authorization in the backend									MID-PRIORITY George-M
+	mongoose to actually connect localy									DONE
 	
 FRONTEND/ANGULAR:
-	proper From Validation and naming
-	Populate the rest of the forms.
-	Update CCS for better visual effects.
-	Reshape the top and left html sections.
-	Create authorization in the frontend.
-	Use seperate angular controlers for patient and eksetaseis.
-	Reshape the form sections ( make them use tabs) : UPDATE DIDN't LOOK GOOD. REVERT.
+	proper From Validation and naming									LOW-PRIORITY JOHN
+	Populate the rest of the forms.										HIGH-PRIORITY JOHN
+	Update CCS for better visual effects.								HIGH-PRIORITY JOHN
+	Reshape the top and left html sections.								MID-PRIORITY JOHN ( scarp them if you don't have the time)
+	Create authorization in the frontend.								HIGH-PRIORITY GEORGE-M
+	Use seperate angular controlers for patient and eksetaseis.			LOW-PRIORITY GEORGE-M
+	Reshape the form sections ( make them use tabs) : 					UPDATE DIDN't LOOK GOOD. REVERT.
+	Create Upload File mechanism										HIGH-PRIORITY GEORGE-M
 
 Misc:
-	Find a way to use the angulr theme to make everything automatic.
-	reshape functionality to use restangular 
-	reshape functionality to use node-rest.js 
+	Find a way to use the angulr theme to make everything automatic.	LOW-PRIORITY GEORGE-M
+	reshape functionality to use restangular 							LOW-PRIORITY GEORGE-M
+	reshape functionality to use node-rest.js  							LOW-PRIORITY GEORGE-M
 	
 TOOLS:
-	Tools for MongoDB queries. : robomongo FTW.
+	Tools for MongoDB queries. : robomongo FTW.							DONE
 	
