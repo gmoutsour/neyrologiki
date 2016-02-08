@@ -110,6 +110,7 @@
         $http.get('/api/eksetaseis/by_id/' + id)
             .success(function(data) {
                 $scope.eksetashFormData = data;
+				$scope.show_add_eksetash=true;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -125,7 +126,7 @@
             .success(function(data) {
 				$scope.eksetaseis = data;
 				$scope.eksetashFormData ={};
-
+				$scope.show_add_eksetash=false;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -135,6 +136,7 @@
 
     $scope.cancelEksetash = function(id) {
 		$scope.eksetashFormData ={};
+		$scope.show_add_eksetash=false;
     };		
 
     // get all eksetaseis 
