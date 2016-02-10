@@ -10,6 +10,25 @@
 	$scope.patientformData.hmeromhnia_eggrafhs = new Date();  
     $scope.show_tab = 1;
 	
+	$scope.select_form_omotima = [
+		{
+		value: '0',
+		label: 'κ.φ'
+		}, 
+		{
+		value: '1',
+		label: '+1'
+		}, 
+		{
+		value: '2',
+		label: '+2'
+		}, 
+		{
+		value: '3',
+		label: '+3'
+		}
+	];	
+	
     // when landing on the page, get all patients and show them
     $http.get('/api/patients')
         .success(function(data) {

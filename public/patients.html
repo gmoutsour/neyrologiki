@@ -2129,66 +2129,52 @@
 					</div>
 				</div>
 
-				<div name= "paregkefalikes_dokimasies" ng-show="isTabSet(4)">
+				<div name= "paregkefalidikes_dokimasies" ng-show="isTabSet(4)">
 				<h3>Παρεγκεφαλιδικές δοκιμασίες:</h3>
 
 					  <table class="table table-bordered">
 						<thead>
 						  <tr>
-							<th></th>
+							<th>ΌΛΕΣ</th>
 							<th colspan=2>ΔΕΞΙΑ</th>
 							<th colspan=2>ΑΡΙΣΤΕΡΑ</th>
 						  </tr>
 						  <tr>
-							<th width="20%">               </th>
-							<th >κ.φ.</th>
-							<th >παθολογική</th>
-							<th >κ.φ.</th>
-							<th >παθολογική</th>
+							<th width="20%">κ.φ</th>
+							<th colspan=2>παθολογική</th>
+							<th colspan=2>παθολογική</th>
 						  </tr>
 						</thead>
 						<tbody>
 						  <tr>
-							<td>ΌΛΕΣ <input type="checkbox"  ng-click="show_kinhtikothta=!show_kinhtikothta"></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td><input type="checkbox"  ng-model="eksetashFormData.paregkefalidikes_dokimasies.global"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.right" ></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.left" ></td>
 						  </tr>
-						  <tr ng-show="show_kinhtikothta">
+						  <tr ng-hide="eksetashFormData.paregkefalidikes_dokimasies.global">
 							<td>δείκτης-ρίνα</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.deikths_rina.right"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.deikths_rina.left"></td>
 						  </tr>
-						  <tr ng-show="show_kinhtikothta">
+						  <tr ng-hide="eksetashFormData.paregkefalidikes_dokimasies.global">
 							<td>πτέρνα-γόνυ</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.pterna_gony.right"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.pterna_gony.left"></td>
 						  </tr>
-						  <tr ng-show="show_kinhtikothta">
+						  <tr ng-hide="eksetashFormData.paregkefalidikes_dokimasies.global">
 							<td>δυσδιαδοχοκινησία</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.dysdiadocokinhsia.right"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.dysdiadocokinhsia.left"></td>
 						  </tr>
-						  <tr ng-show="show_kinhtikothta">
-							<td>Gordon- Holmes</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+						  <tr ng-hide="eksetashFormData.paregkefalidikes_dokimasies.global">
+							<td>Gordon-Holmes</td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.gordon_holmes.right"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.gordon_holmes.left"></td>
 						  </tr>
-						  <tr ng-show="show_kinhtikothta">
+						  <tr ng-hide="eksetashFormData.paregkefalidikes_dokimasies.global">
 							<td>Στάση (βάση στήριξης)</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.stash.right"></td>
+							<td colspan=2><input type="checkbox" ng-model="eksetashFormData.paregkefalidikes_dokimasies.stash.left"></td>
 						  </tr>
 
 						</tbody>
@@ -2196,9 +2182,9 @@
 				</div>
 
 				<div name= "antanaklastika" ng-show="isTabSet(5)">
-				<h3>Αντανακλαστικά:</h3>
+					<h3>Αντανακλαστικά:</h3>
 
-					  <table class="table table-bordered">
+					<table class="table table-bordered">
 						<thead>
 						  <tr>
 							<th colspan=4>ΠΕΛΜΑΤΙΑΙΑ</th>
@@ -2213,33 +2199,27 @@
 						<tbody>
 						  <tr>
 							<td>ΔΕ</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td ><input type="checkbox" ng-model="eksetashFormData.antanaklastika.pelmatiaia.kampsh.right" ></td>
+							<td ><input type="checkbox" ng-model="eksetashFormData.antanaklastika.pelmatiaia.babinski.right" ></td>
 							<td >
 								<div class="col-sm-10">
 									<div class="row">
-									  <div class="col-md-1">
-										<input type="checkbox"  >
-									  </div>
 									  <div class="col-md-5">
-										<input type="text" class="form-control" placeholder="">
+										<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.pelmatiaia.allo.right">
 									  </div>
 									</div>
 								</div>
 							</td>
 						  </tr>
 						  <tr>
-							<td>ΑΡ</td>
-							<td ><input type="checkbox"  ></td>
-							<td ><input type="checkbox"  ></td>
+							<td>Αρ</td>
+							<td ><input type="checkbox" ng-model="eksetashFormData.antanaklastika.pelmatiaia.kampsh.left" ></td>
+							<td ><input type="checkbox" ng-model="eksetashFormData.antanaklastika.pelmatiaia.babinski.left" ></td>
 							<td >
 								<div class="col-sm-10">
 									<div class="row">
-									  <div class="col-md-1">
-										<input type="checkbox"  >
-									  </div>
 									  <div class="col-md-5">
-										<input type="text" class="form-control" placeholder="">
+										<input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.pelmatiaia.allo.left">
 									  </div>
 									</div>
 								</div>
@@ -2248,44 +2228,96 @@
 						</tbody>
 					  </table>
 
-				<div name= "antanaklastika_2">TODO
-				</div>
+					<div name= "antanaklastika_2">
+					
+						<div class="col-sm-10">
+							<div class="row">
+							  <div class="col-md-3">
+								Τενόντια Αντανακλαστικά
+							  </div>
+							</div>
+						</div>
+						<div class="col-sm-10" >
+							<div class="row">
+							  <table class="table table-bordered" >
+								<thead>
+								  <tr>
+									<th>Ομότιμα</th>
+									<th >Παθολογικά </th>
+									<th >Παθολογικά </th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td><select ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.omotima" ng-options="someObject.label for someObject in select_form_omotima track by someObject.value"></td>
+									<td>
+										<div>
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.check">
+										</div>
+										<div name= "antanaklastika_3" ng-show="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.check">
 
-				<div name= "antanaklastika_3">
+											  <table class="table table-bordered">
+												<thead>
+												  <tr>
+													<th >Τενόντια</th>
+													<th >Δικεφάλου</th>
+													<th >Τρικεφάλου</th>
+													<th >Βραχκερκιδικό</th>
+													<th >Επιγονάτιο</th>
+													<th >Αχίλλλειο</th>
+												  </tr>
+												</thead>
+												<tbody>
+												  <tr>
+													<td>Δεξιά</td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.dikefalou.right"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.trikefalou.right"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.braxkerkidiko.right"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.epigonatio.right"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.axilleio.right"></td>
+												  </tr>
+												  <tr>
+													<td>Αριστερά</td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.dikefalou.left"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.trikefalou.left"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.braxkerkidiko.left"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.epigonatio.left"></td>
+													<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika1.axilleio.left"></td>
+												  </tr>
+												</tbody>
+											  </table>
+										</div>
+									</td>
+									<td>
+										<div>
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika2.check">
+										</div>
+										<div class="col-sm-10" ng-show="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika2.check">
+											<div class="row">
+											  <div class="col-md-10">
+												Κλίμακας πολυνευροπάθειας  1  
+											  </div>
+											  <div class="col-md-2">
+												<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika2.klimaka_polyneyropatheias_1">
+											  </div>
+											</div>							
 
-					  <table class="table table-bordered">
-						<thead>
-						  <tr>
-							<th >Τενόντια</th>
-							<th >Δικεφάλου</th>
-							<th >Τρικεφάλου</th>
-							<th >Βραχκερκιδικό</th>
-							<th >Επιγονάτιο</th>
-							<th >Αχίλλλειο</th>
-						  </tr>
-						</thead>
-						<tbody>
-						  <tr>
-							<td>Δεξιά</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						  </tr>
-						  <tr>
-							<td>Αριστερά</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						  </tr>
-						</tbody>
-					  </table>
-
-				</div>
-
+											<div class="row">
+											  <div class="col-md-10">
+												Κλίμακας πολυνευροπάθειας  2  
+											  </div>
+											  <div class="col-md-2">
+												<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.antanaklastika.tenontia_antanaklastika.pathologika2.klimaka_polyneyropatheias_2">
+											  </div>
+											</div>							
+										</div>
+									</td>
+								  </tr>
+							  </tbody>
+							  </table>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div name= "aisthitikothta" ng-show="isTabSet(6)">

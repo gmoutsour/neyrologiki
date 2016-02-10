@@ -368,9 +368,79 @@
 		},
 		paregkefalidikes_dokimasies : {
 			global : Boolean ,
+			right : Boolean ,
+			left : Boolean ,
+			deikths_rina : {
+				right : Boolean ,
+				left : Boolean 
+			},
+			pterna_gony : {
+				right : Boolean ,
+				left : Boolean 
+			},
+			dysdiadocokinhsia : {
+				right : Boolean ,
+				left : Boolean 
+			},
+			gordon_holmes : {
+				right : Boolean ,
+				left : Boolean 
+			},
+			stash : {
+				right : Boolean ,
+				left : Boolean 
+			}
 		},
 		antanaklastika : {
-			global : Boolean ,
+			pelmatiaia : {
+				kampsh : {
+					right : Boolean,
+					left : Boolean
+				},
+				babinski : {
+					right : Boolean,
+					left : Boolean
+				},
+				allo : {
+					right : String,
+					left : String
+				}
+			},
+			tenontia_antanaklastika : {
+				omotima : {
+					value : Number,
+					label : String
+				},
+				pathologika1 : {
+					check : Boolean,
+					dikefalou : {
+						right :Boolean,
+						left :Boolean
+					},
+					trikefalou : {
+						right :Boolean,
+						left :Boolean
+					},
+					braxkerkidiko : {
+						right :Boolean,
+						left :Boolean
+					},
+					epigonatio : {
+						right :Boolean,
+						left :Boolean
+					},
+					axilleio : {
+						right :Boolean,
+						left :Boolean
+					}
+					
+				},
+				pathologika2 : {
+					check : Boolean,
+					klimaka_polyneyropatheias_1 : Boolean,
+					klimaka_polyneyropatheias_2 : Boolean
+				}
+			}
 		},
 		aisthhtikothta : {
 			anw_akra : {
