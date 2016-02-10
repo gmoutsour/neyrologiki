@@ -287,11 +287,84 @@
 					}
 			}
 		},
-		kinitikotita : {
-			global : Boolean ,
+		kinhtikothta : {
+			myikh_isxys : {
+				global : Boolean,
+				kentrikou_typou : {
+					check : Boolean,
+					hmiparesh : Boolean,
+					paraparesh : Boolean
+				},
+				periferikou_typou : {
+					check : Boolean,
+					shmeiwseis : String
+				}
+				
+			},
+			myikh_tonos : {
+				global : Boolean,
+				dyskampsia : Boolean,
+				spastikothta : Boolean,
+				shmeio_odontotou_troxou : Boolean,
+				allo : String
+			}
 		},
-		myiki_atrofia : {
+		myikh_atrofia : {
 			global : Boolean ,
+			wmiki_zwnh : {
+				right : Boolean,
+				left : Boolean
+			},
+			akra_xeira : {
+				right : Boolean,
+				left : Boolean
+			},
+			pyelikh_zwnh : {
+				right : Boolean,
+				left : Boolean
+			},
+			mys_knhmhs : {
+				right : Boolean,
+				left : Boolean
+			},
+			akros_pous : {
+				right : Boolean,
+				left : Boolean
+			},
+			stash_badish : {
+				global : Boolean,
+				spastiko : {
+					check : Boolean,
+					hmiplhgiko : {
+						check : Boolean,
+						right : Boolean,
+						left : Boolean
+					},
+					paraplhgiko : Boolean
+				},
+				ataksiko : {
+					check : Boolean,
+					aisthhtikh_ataksia : Boolean,
+					paregkefalidiko : Boolean
+				},
+				spastikoataksiko : {
+					check : Boolean
+				},
+				parkinsoniko : {
+					check : Boolean
+				},
+				kalpastiko : {
+					check : Boolean,
+					right : Boolean,
+					left : Boolean
+				},
+				nhsseio : {
+					check : Boolean
+				},
+				allo : {
+					check : Boolean
+				}
+			}
 		},
 		paregkefalidikes_dokimasies : {
 			global : Boolean ,

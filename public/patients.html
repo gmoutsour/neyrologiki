@@ -1800,15 +1800,123 @@
 				</div>
 
 				<div name= "kinhtikothta" ng-show="isTabSet(2)">
-				<h3>Κινητικότητα:</h3>TODO
+				<h3>Κινητικότητα:</h3>
+
+					<div class="panel-body" name="myikh_isxys">
+						<div class="col-sm-10">
+							<div class="row">
+							  <div class="col-md-3">
+								Μυϊκή ισχύς
+							  </div>
+							  <div class="col-md-5">
+								<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.global">
+							  </div>
+							</div>
+						</div>
+						<div class="col-sm-10" ng-show="eksetashFormData.kinhtikothta.myikh_isxys.global">
+							<div class="row">
+							  <div class="col-md-3">
+								Κεντρικού τύπου
+							  </div>
+							  <div class="col-md-5">
+								<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.kentrikou_typou.check">
+							  </div>
+
+							  <table class="table table-bordered" ng-show="eksetashFormData.kinhtikothta.myikh_isxys.kentrikou_typou.check">
+								<thead>
+								  <tr>
+									<th></th>
+									<th >Ημιπάρεση</th>
+									<th >Παραπάρεση</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td></td>
+									<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.kentrikou_typou.hmiparesh"></td>
+									<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.kentrikou_typou.paraparesh"></td>
+								  </tr>
+							  </tbody>
+							  </table>
+							</div>
+						</div>
+						
+						<div class="col-sm-10" ng-show="eksetashFormData.kinhtikothta.myikh_isxys.global">
+							<div class="row">
+							  <div class="col-md-3">
+								Περιφερικού τύπου
+							  </div>
+							  <div class="col-md-5">
+								<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.periferikou_typou.check">
+							  </div>
+
+							  <table class="table table-bordered" ng-show="eksetashFormData.kinhtikothta.myikh_isxys.periferikou_typou.check">
+								<thead>
+								  <tr>
+									<th></th>
+									<th >MRC score</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td></td>
+									<td><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_isxys.periferikou_typou.shmeiwseis"></td>
+								  </tr>
+							  </tbody>
+							  </table>
+							</div>
+						</div>
+
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+					</div>
+
+
+					<div class="panel-body" name="myikh_tonos">
+						<div class="col-sm-10">
+							<div class="row">
+							  <div class="col-md-3">
+								Μυϊκή τόνος
+							  </div>
+							  <div class="col-md-5">
+								<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_tonos.global">
+							  </div>
+							</div>
+						</div>
+						<div class="col-sm-10" ng-show="eksetashFormData.kinhtikothta.myikh_tonos.global">
+							<div class="row">
+
+							  <table class="table table-bordered" >
+								<thead>
+								  <tr>
+									<th>Δυσκαμψία</th>
+									<th>Σπαστικότητα</th>
+									<th>Σημείο οδοντωτού τροχού </th>
+									<th>Άλλο</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_tonos.dyskampsia"></td>
+									<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_tonos.spastikothta"></td>
+									<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_tonos.shmeio_odontotou_troxou"></td>
+									<td><input type="text" class="form-control" placeholder="" ng-model="eksetashFormData.kinhtikothta.myikh_tonos.allo"></td>
+								  </tr>
+							  </tbody>
+							  </table>
+							</div>
+						</div>
+
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+					</div>
+					
+				
 				</div>
 
 				<div name= "myikh_atrofia" ng-show="isTabSet(3)">
-				<h3>Μυϊκή ατροφία:</h3><input type="checkbox"  ng-click="show_myikh_atrofia=!show_myikh_atrofia">
+				<h3>Μυϊκή ατροφία:</h3><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.global">  
 
-					<div ng-show="show_myikh_atrofia" class="hideByDefault" name="myikh_atrofia_basic">
-
-							<div class="panel-body" name="myikh_atrofia_1">
+					<div ng-show="eksetashFormData.myikh_atrofia.global" class="hideByDefault" name="myikh_atrofia_basic">
+							<div class="panel-body" name="myikh_atrofia_1" >
 								<div class="col-sm-10">
 								  <table class="table table-bordered">
 									<thead>
@@ -1821,28 +1929,28 @@
 									<tbody>
 									  <tr>
 										<td>Ωμική ζώνη</td>
-										<td ><input type="checkbox"  ></td>
-										<td ><input type="checkbox"  ></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.wmiki_zwnh.right"></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.wmiki_zwnh.left"></td>
 									  </tr>
 									  <tr>
 										<td>Άκρα χείρα</td>
-										<td ><input type="checkbox"  ></td>
-										<td ><input type="checkbox"  ></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.akra_xeira.right"></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.akra_xeira.left"></td>
 									  </tr>
 									  <tr>
 										<td>Πυελική ζώνη</td>
-										<td ><input type="checkbox"  ></td>
-										<td ><input type="checkbox"  ></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.pyelikh_zwnh.right"></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.pyelikh_zwnh.left"></td>
 									  </tr>
 									  <tr>
 										<td>Μυς κνήμης</td>
-										<td ><input type="checkbox"  ></td>
-										<td ><input type="checkbox"  ></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.mys_knhmhs.right"></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.mys_knhmhs.left"></td>
 									  </tr>
 									  <tr>
 										<td>Άκρος πους</td>
-										<td ><input type="checkbox"  ></td>
-										<td ><input type="checkbox"  ></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.akros_pous.right"></td>
+										<td ><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.akros_pous.left"></td>
 									  </tr>
 								  </tbody>
 								  </table>
@@ -1850,9 +1958,174 @@
 								<div class="line line-dashed b-b line-lg pull-in"></div>
 							</div>
 					</div>
+				<h3>Στάση/ Βάδιση:</h3><input type="checkbox" ng-model="eksetashFormData.myikh_atrofia.stash_badish.global">  
+					<div ng-show="eksetashFormData.myikh_atrofia.stash_badish.global" class="hideByDefault" name="myikh_atrofia_stash_badish">
+						<div class="panel-body" >
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_1">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Σπαστικό
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastiko.check">
+									  </div>
+									</div>
+								</div>
+								<div class="col-sm-10" ng-show="eksetashFormData.myikh_atrofia.stash_badish.spastiko.check">
+									<div class="row">
+									  <div class="col-md-3">
+										Ημιπληγικό
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastiko.hmiplhgiko.check">
+									  </div>
+									  <table class="table table-bordered" ng-show="eksetashFormData.myikh_atrofia.stash_badish.spastiko.hmiplhgiko.check">
+										<thead>
+										  <tr>
+											<th></th>
+											<th >Δεξί</th>
+											<th >Αριστερό</th>
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr>
+											<td></td>
+											<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastiko.hmiplhgiko.right"></td>
+											<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastiko.hmiplhgiko.left"></td>
+										  </tr>
+									  </tbody>
+									  </table>
+									</div>
+									
+									<div class="row">
+									  <div class="col-md-3">
+										Παραπλγικό 
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastiko.paraplhgiko">
+									  </div>
+									</div>							
+								</div>
+								
+							</div>
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_2">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Αταξικό
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.ataksiko.check">
+									  </div>
+									</div>
+								</div>
+								<div class="col-sm-10" ng-show="eksetashFormData.myikh_atrofia.stash_badish.ataksiko.check">
+									<div class="row">
+									  <div class="col-md-3">
+										Αισθητική αταξία 
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.ataksiko.aisthhtikh_ataksia">
+									  </div>
+									</div>							
+									
+									<div class="row">
+									  <div class="col-md-3">
+										Παρεγκεφαλιδικό 
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.ataksiko.paregkefalidiko">
+									  </div>
+									</div>							
+								</div>
+								
+							</div>
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_3">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Σπαστικοαταξικό
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.spastikoataksiko.check">
+									  </div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_4">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Παρκινσονικό 
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.parkinsoniko.check">
+									  </div>
+									</div>
+								</div>
+							</div>
 
-					<div ng-show="show_myikh_atrofia" class="hideByDefault" name="myikh_atrofia_extended">
-					TODO
+							<div class="panel-body" name="myikh_atrofia_stash_badish_5">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Καλπαστικό
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.kalpastiko.check">
+									  </div>
+									</div>
+								</div>
+								  <table class="table table-bordered" ng-show="eksetashFormData.myikh_atrofia.stash_badish.kalpastiko.check">
+									<thead>
+									  <tr>
+										<th></th>
+										<th >Δεξί</th>
+										<th >Αριστερό</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td></td>
+										<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.kalpastiko.right"></td>
+										<td><input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.kalpastiko.left"></td>
+									  </tr>
+								  </tbody>
+								  </table>								
+							</div>
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_6">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Νήσσειο
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.nhsseio.check">
+									  </div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel-body" name="myikh_atrofia_stash_badish_7">
+								<div class="col-sm-10">
+									<div class="row">
+									  <div class="col-md-3">
+										Άλλο
+									  </div>
+									  <div class="col-md-5">
+										<input type="checkbox" class="form-control" placeholder="" ng-model="eksetashFormData.myikh_atrofia.stash_badish.allo.check">
+									  </div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
 					</div>
 				</div>
 
