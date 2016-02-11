@@ -189,11 +189,11 @@
 				  <tr>
 					<th>ΑΜΚΑ</th>
 					<th>Όνοματεπώνυμο</th>
-					<th>Ημερομηνία Γέννησης</th>
+					<th>Ημ. Γέννησης</th>
 					<th>Τηλέφωνο</th>
 					<th>Διεύθυνση</th>
 					<th>Πάθηση</th>
-					<th>Αναλυτικά/Επεξεργασία</th>
+					<th>Επεξ./Ανάλυση</th>
 					<th>Διαγραφή</th>
 				  </tr>
 				</thead>
@@ -232,7 +232,7 @@
 			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Ονοματεπώνυμο" ng-model="patientformData.onomateponymo" required>
 			</div>
 			<div class="form-group">
-			  <label class="sr-only" for="exampleInputPassword2">Ημερομηνία Γέννησης</label>
+			  <label class="sr-only" for="exampleInputPassword2">Ημ. Γέννησης</label>
 			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Ημερομηνία Γέννησης" ng-model="patientformData.hmeromhnia_gennhshs" value="{{ date | date: 'dd/mm/yyyy' }}" >
 			</div>
 			<div class="form-group">
@@ -244,10 +244,15 @@
 			  <!--<input type="text" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone">-->
 			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone" ngMinlength="10">
 			</div>
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputPassword2">Πάθηση</label>
+			  <!--<input type="text" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone">-->
+			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Πάθηση" ng-model="patientformData.disease">
+			</div>
 			<button type="submit" class="btn btn-primary btn-sm" ng-hide="patientformData._id" ng-click=" patientForm.$valid && createPatient()">Προσθήκη</button>
-			<button type="submit" class="btn btn-primary btn-sm" ng-show="patientformData._id" ng-click=" patientForm.$valid && updatePatient(patientformData._id)">Αποθήκευση</button>
+			<button type="submit" class="btn btn-primary btn-sm" ng-show="patientformData._id" ng-click=" patientForm.$valid && updatePatient(patientformData._id)">Save</button>
 
-			<button type="submit" class="btn btn-default btn-sm" ng-click="cancelPatient()" >Ακύρωση</button>
+			<button type="submit" class="btn btn-default btn-sm" ng-click="cancelPatient()" >Cancel</button>
 		  </form>
 		</div>
 
