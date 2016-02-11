@@ -60,7 +60,17 @@
 
     // when submitting the add form, send the text to the node API
     $scope.createPatient = function() {
-        $http.post('/api/patients', $scope.patientformData)
+		
+		var fd = new FormData();
+		for (var key in $scope.patientformData)
+			fd.append(key, $scope.patientformData[key])
+		// NOTE DATAFILE SHOULD BE EXACTLY THE SAME AS IN SERVER.JS 
+		fd.append("datafile",document.getElementById('file').files[0]);
+
+        $http.post('/api/patients', fd ,{
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined }
+    })
             .success(function(data) {
                 $scope.patientformData = {}; // clear the form so our user is ready to enter another
                 $scope.patients = data;
