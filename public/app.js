@@ -65,7 +65,8 @@
 		for (var key in $scope.patientformData)
 			fd.append(key, $scope.patientformData[key])
 		// NOTE DATAFILE SHOULD BE EXACTLY THE SAME AS IN SERVER.JS 
-		fd.append("datafile",document.getElementById('file').files[0]);
+		if (document.getElementById('file'))
+			fd.append("datafile",document.getElementById('file').files[0]);
 
         $http.post('/api/patients', fd ,{
         transformRequest: angular.identity,
