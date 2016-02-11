@@ -9,6 +9,8 @@
     var morgan = require('morgan');             // log requests to the console (express4)
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+	var multer = require('multer'); 
+	var upload = multer({dest: './uploads/'});
 
     // configuration =================
 
@@ -28,7 +30,7 @@
 	/*
 	MAP THE HTML INPUT INTO MONGOSE TABLES
 	*/
-//	var Patient = require('./patient');
+
 	var DBmodule = require('./patient');
 	var Patient = DBmodule.Patient;
 	var Eksetash = DBmodule.Eksetash;
@@ -36,7 +38,7 @@
     // api ---------------------------------------------------------------------
     // get all Patients
     app.get('/api/patients', function(req, res) {
-
+		
         // use mongoose to get all patients in the database
         Patient.find(function(err, patient) {
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -58,11 +60,9 @@
 
     });
 	
-    // create patient and send back all patients after creation
-    app.post('/api/patients', function(req, res) {
-    console.log(req.body);
-        // create a patient, information comes from AJAX request from Angular
+	app.post('/api/patients', upload.array('datafile',20), function (req, res, next) {
 
+        // create a patient, information comes from AJAX request from Angular
 	var new_patient = new Patient(req.body);	
     console.log(new_patient);
 	
