@@ -60,6 +60,8 @@
 
     // when submitting the add form, send the text to the node API
     $scope.createPatient = function() {
+		/*
+		NEED TO REVERT THIS. NEEDS MORE WORK BEFORE IT WILL GO TO THE DOCTEOR.
 		
 		var fd = new FormData();
 		for (var key in $scope.patientformData)
@@ -72,6 +74,8 @@
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined }
     })
+	*/
+        $http.post('/api/patients', $scope.patientformData )
             .success(function(data) {
                 $scope.patientformData = {}; // clear the form so our user is ready to enter another
                 $scope.patients = data;
