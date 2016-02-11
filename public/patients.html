@@ -106,11 +106,11 @@
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                  <span class="font-bold">Dashboard</span>
+                  <span class="font-bold">Αρχείο Ασθενών</span>
                 </a>
                </li>
 			   <li>
-                <a href="mail.html">
+                <a href="patients.html">
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">logout</span>
                 </a>
@@ -187,22 +187,24 @@
 			<table class="table table-bordered">
 				<thead>
 				  <tr>
-					<th >Ημερομηνία Εγγραφής</th>
-					<th >Όνοματεπώνυμο</th>
-					<th >Ημερομηνία Γέννησης</th>
-					<th >Τηλέφωνο</th>
-					<th >Διεύθυνση</th>
-					<th >Αναλυτικά/Επεξεργασία</th>
-					<th >Διαγραφή</th>
+					<th>ΑΜΚΑ</th>
+					<th>Όνοματεπώνυμο</th>
+					<th>Ημερομηνία Γέννησης</th>
+					<th>Τηλέφωνο</th>
+					<th>Διεύθυνση</th>
+					<th>Πάθηση</th>
+					<th>Αναλυτικά/Επεξεργασία</th>
+					<th>Διαγραφή</th>
 				  </tr>
 				</thead>
 				<tbody>
 				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1">
-					<td>{{ patient.hmeromhnia_eggrafhs |date : 'dd/MM/yyyy' }}</td>
+					<td>{{ patient.amka  }}</td>
 					<td>{{ patient.onomateponymo}}</td>
 					<td>{{ patient.hmeromhnia_gennhshs |date : 'dd/MM/yyyy' }}</td>
 					<td>{{ patient.phone }}</td>
 					<td>{{ patient.dieythinsh }}</td>
+					<td>{{ patient.disease }}</td>
 					<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="getpatient(patient._id)">Αναλυτικά</button></td>
 					<td><button type="submit"  class="btn btn-default btn-sm" value="" ng-click="deletepatient(patient._id)">Διαγραφή</button></td>
 				</tr>
@@ -218,12 +220,12 @@
 
 		<div class="panel-body" name="basika_stoixeia" style="border: 1px solid #888; ">
 			<div class="panel-heading font-bold">
-			  Βασικά Στοιχεία
+			  Στοιχεία Ασθενή
 			</div>
 		  <form class="form-inline" role="form" name="patientForm">
 			<div class="form-group">
-			  <label class="sr-only" for="exampleInputEmail2">Ημερομηνία Εγγραφής</label>
-			  <input type="date" class="form-control" placeholder="mm/dd/yyyy"  ui-date ui-date-format="mm/dd/yyyy" ng-model="patientformData.hmeromhnia_eggrafhs" value="{{ date | date: 'mm/dd/yyyy' }}">
+			  <label class="sr-only" for="exampleInputPassword2">AMKA</label>
+			  <input type="text" class="form-control" placeholder="AMKA"   ng-model="patientformData.amka"  required>
 			</div>
 			<div class="form-group">
 			  <label class="sr-only" for="exampleInputPassword2">Ονοματεπώνυμο</label>
@@ -231,7 +233,7 @@
 			</div>
 			<div class="form-group">
 			  <label class="sr-only" for="exampleInputPassword2">Ημερομηνία Γέννησης</label>
-			  <input type="date" class="form-control" id="exampleInputPassword2" placeholder="Ημερομηνία Γέννησης" ng-model="patientformData.hmeromhnia_gennhshs" value="{{ date | date: 'mm/dd/yyyy' }}">
+			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Ημερομηνία Γέννησης" ng-model="patientformData.hmeromhnia_gennhshs" value="{{ date | date: 'dd/mm/yyyy' }}" >
 			</div>
 			<div class="form-group">
 			  <label class="sr-only" for="exampleInputPassword2">Διεύθυνση</label>
@@ -240,7 +242,7 @@
 			<div class="form-group">
 			  <label class="sr-only" for="exampleInputPassword2">Τηλέφωνο</label>
 			  <!--<input type="text" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone">-->
-			  <input type="number" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone" ngMinlength="10">
+			  <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Τηλέφωνο" ng-model="patientformData.phone" ngMinlength="10">
 			</div>
 			<button type="submit" class="btn btn-primary btn-sm" ng-hide="patientformData._id" ng-click=" patientForm.$valid && createPatient()">Προσθήκη</button>
 			<button type="submit" class="btn btn-primary btn-sm" ng-show="patientformData._id" ng-click=" patientForm.$valid && updatePatient(patientformData._id)">Αποθήκευση</button>
@@ -435,8 +437,12 @@
 	<form class="form-inline" role="form" name="eksetashForm">
 		<button type="submit" class="btn btn-primary btn-sm" ng-click=" createEksetash(patientformData._id)">Προσθήκη</button>
 		<button type="submit" class="btn btn-default btn-sm" ng-click=" cancelEksetash(patientformData._id)">Πίσω</button>
-		<input type="text"  ng-model="eksetashFormData.shmeiwseis" placeholder="Περίληψη">
-
+		
+		<input type="text"  ng-model="eksetashFormData.shmeiwseis" placeholder="Περίληψη"  class="col-sm-10" >
+		
+		
+     
+	  
 		<section class="tab" >
 		<!--<section class="tab" ng-controller="TabController as tab"> -->
 			<ul class="nav nav-pills">
