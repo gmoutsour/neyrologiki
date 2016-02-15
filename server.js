@@ -10,7 +10,6 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 	var multer = require('multer'); 
-	var upload = multer({dest: './uploads/'});
 
     // configuration =================
 
@@ -59,12 +58,40 @@
 		});		
 
     });
+
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/temp/')
+  },
+  filename: function (req, file, cb) {
+      cb(null,  file.originalname );
+  }
+});
+
+var upload = multer({ storage: storage });	
+var uploadFile = upload.array('datafile',20);
+
+	
+	app.post('/api/upload', function (req, res, next) {
+		
+	var new_patient = new Patient(req.body);	
+
+    uploadFile(req, res, function (err) {
+        console.log('not ok');
+
+        if (err) return next(err);
+        res.status(204).end();
+    });		
+	// call the built-in save method to save to the database
+	//res.json("");
+    });
+
 	
 	app.post('/api/patients', upload.array('datafile',20), function (req, res, next) {
 
         // create a patient, information comes from AJAX request from Angular
 	var new_patient = new Patient(req.body);	
-    console.log(new_patient);
 	
 	// call the built-in save method to save to the database
 	new_patient.save( function(err, patient) {

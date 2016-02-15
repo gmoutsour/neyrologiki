@@ -34,7 +34,9 @@
 				farmako4 : String,
 				farmako5 : String
 				}
-			}
+			},
+	patient_file1 : String,
+	patient_file2 : String
     });
 
 	var eksetashSchema = new Schema(
@@ -42,6 +44,14 @@
 		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
 		hmeromhnia : Date,
 		shmeiwseis : String,
+		eksetash_file1 : String,
+		eksetash_file2 : String,
+		eksetash_file3 : String,
+		eksetash_file4 : String,
+		eksetash_file5 : String,
+		eksetash_file6 : String,
+		eksetash_file7 : String,
+		eksetash_file8 : String,
 		egkefalikes_syzigies : {
 			global : Boolean ,
 			neyrologiki_right : {

@@ -58,23 +58,44 @@
 
     };
 
-    // when submitting the add form, send the text to the node API
-    $scope.createPatient = function() {
-		/*
-		NEED TO REVERT THIS. NEEDS MORE WORK BEFORE IT WILL GO TO THE DOCTEOR.
-		
-		var fd = new FormData();
-		for (var key in $scope.patientformData)
-			fd.append(key, $scope.patientformData[key])
-		// NOTE DATAFILE SHOULD BE EXACTLY THE SAME AS IN SERVER.JS 
-		if (document.getElementById('file'))
-			fd.append("datafile",document.getElementById('file').files[0]);
 
-        $http.post('/api/patients', fd ,{
+	//	Upload all files into a temp folder. Then call the callback function to continue the operations as usual.
+	$scope.upload_files = function ( element_array, _callback )  {
+		//function that uploads files in /upload/temp/ folder
+		var fd = new FormData();
+		var arrayLength = element_array.length;
+		for (var i = 0; i < arrayLength; i++) {
+			if (document.getElementById(element_array[i]))
+				fd.append("datafile",document.getElementById(element_array[i]).files[0]);
+		}
+		
+        $http.post('/api/upload', fd ,{
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined }
-    })
-	*/
+			})
+            .success(function(data) {
+				_callback();
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+		//function that uploads files in /upload/temp/ folder
+		
+	}
+
+	$scope.uploadpatientformDataFile = function(files,element_name) {
+		$scope.patientformData[element_name] = files[0].name;
+	}
+
+	$scope.uploadeksetashFormDataFile = function(files,element_name) {
+		$scope.eksetashFormData[element_name] = files[0].name;
+	}
+	
+    // when submitting the add form, send the text to the node API
+    $scope.createPatient = function() {
+	$scope.element_array = ["patient_file1" , "patient_file2"];
+	$scope.upload_files($scope.element_array,function ( ) {
+		
         $http.post('/api/patients', $scope.patientformData )
             .success(function(data) {
                 $scope.patientformData = {}; // clear the form so our user is ready to enter another
@@ -86,6 +107,7 @@
             .error(function(data) {
                 console.log('Error: ' + data);
             });
+		});
     };
 
     // when submitting the add form, send the text to the node API
@@ -156,18 +178,27 @@
 		// Fix in case we want to add a new eksetash by using data from an existing one.
 		delete $scope.eksetashFormData._id;
 		$scope.eksetashFormData.hmeromhnia = new Date();
+		$scope.element_array = ["eksetash_file1" , "eksetash_file2" , "eksetash_file3" , "eksetash_file4" , "eksetash_file5" , "eksetash_file6" , "eksetash_file7" , "eksetash_file8"];
+		
+	$scope.upload_files($scope.element_array,function ( ) {
+		
+		
         $http.post('/api/eksetaseis/'+id, $scope.eksetashFormData)
             .success(function(data) {
 				$scope.eksetaseis = data;
 				$scope.eksetashFormData ={};
+				//TODO clean the input file elements.
 				$scope.show_add_eksetash=false;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
             });
 
+		});
+			
+			
     };
-
+	
     $scope.cancelEksetash = function(id) {
 		$scope.eksetashFormData ={};
 		$scope.show_add_eksetash=false;

@@ -252,9 +252,15 @@
 			<button type="submit" class="btn btn-primary btn-sm" ng-hide="patientformData._id" ng-click=" patientForm.$valid && createPatient()">Προσθήκη</button>
 			<button type="submit" class="btn btn-primary btn-sm" ng-show="patientformData._id" ng-click=" patientForm.$valid && updatePatient(patientformData._id)">Αποθήκευση</button>
 			<button type="submit" class="btn btn-default btn-sm" ng-click="cancelPatient()" >Πίσω</button>
-			<!--GORO<input type="file" name="file" id="file" />GORO -->
-
+			<div class="form-group">
+				Συνημμένο αρχείο 1<input type="file" id="patient_file1" name="patient_file1" onchange="angular.element(this).scope().uploadpatientformDataFile(this.files,'patient_file1')">
+				Συνημμένο αρχείο 2<input type="file" id="patient_file2" name="patient_file2" onchange="angular.element(this).scope().uploadpatientformDataFile(this.files,'patient_file2')">
+			</div>
 		  </form>
+		  <a ng-show="patientformData._id && patientformData.patient_file1" href="./uploads/temp/{{patientformData.patient_file1}}"> <b>Συνημμένο αρχείο 1: {{patientformData.patient_file1}}</b></a>
+		  <a ng-show="patientformData._id && patientformData.patient_file2" href="./uploads/temp/{{patientformData.patient_file2}}"> <b>Συνημμένο αρχείο 2:{{patientformData.patient_file2}}</b></a>
+
+		  
 		</div>
 
 		<div style="border: 1px solid #888; ">
@@ -1879,6 +1885,30 @@
 						  </tr>
 						</tbody>
 					</table>
+
+			<div class="form-group">
+				Συνημμένο αρχείο 1<input type="file" id="eksetash_file1" name="eksetash_file1" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file1')">
+				Συνημμένο αρχείο 2<input type="file" id="eksetash_file2" name="eksetash_file2" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file2')">
+				Συνημμένο αρχείο 3<input type="file" id="eksetash_file3" name="eksetash_file3" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file3')">
+				Συνημμένο αρχείο 4<input type="file" id="eksetash_file4" name="eksetash_file4" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file4')">
+				Συνημμένο αρχείο 5<input type="file" id="eksetash_file5" name="eksetash_file5" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file5')">
+				Συνημμένο αρχείο 6<input type="file" id="eksetash_file6" name="eksetash_file6" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file6')">
+				Συνημμένο αρχείο 7<input type="file" id="eksetash_file7" name="eksetash_file7" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file7')">
+				Συνημμένο αρχείο 8<input type="file" id="eksetash_file8" name="eksetash_file8" onchange="angular.element(this).scope().uploadeksetashFormDataFile(this.files,'eksetash_file8')">
+			</div>
+		  </form>
+		  <!-- HERE WE WILL SHOW THE EXISTING FILES -->
+		  <div>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file1" href="./uploads/temp/{{eksetashFormData.eksetash_file1}}"> <b>Συνημμένο αρχείο 1:{{eksetashFormData.eksetash_file1}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file2" href="./uploads/temp/{{eksetashFormData.eksetash_file2}}"> <b>Συνημμένο αρχείο 2:{{eksetashFormData.eksetash_file2}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file3" href="./uploads/temp/{{eksetashFormData.eksetash_file3}}"> <b>Συνημμένο αρχείο 3:{{eksetashFormData.eksetash_file3}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file4" href="./uploads/temp/{{eksetashFormData.eksetash_file4}}"> <b>Συνημμένο αρχείο 4:{{eksetashFormData.eksetash_file4}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file5" href="./uploads/temp/{{eksetashFormData.eksetash_file5}}"> <b>Συνημμένο αρχείο 5:{{eksetashFormData.eksetash_file5}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file6" href="./uploads/temp/{{eksetashFormData.eksetash_file6}}"> <b>Συνημμένο αρχείο 6:{{eksetashFormData.eksetash_file6}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file7" href="./uploads/temp/{{eksetashFormData.eksetash_file7}}"> <b>Συνημμένο αρχείο 7:{{eksetashFormData.eksetash_file7}}</b></a>
+		  <a ng-show="eksetashFormData._id && eksetashFormData.eksetash_file8" href="./uploads/temp/{{eksetashFormData.eksetash_file8}}"> <b>Συνημμένο αρχείο 8:{{eksetashFormData.eksetash_file8}}</b></a>
+		</div>
+					
 				</div>
 				</div>
 
