@@ -10,7 +10,8 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 	var multer = require('multer'); 
-
+	var fs = require('fs');
+	
     // configuration =================
 
 	// For now connect to remote. Need to connect localy once mongodb in installed and run as service.
@@ -97,6 +98,16 @@ var uploadFile = upload.array('datafile',20);
 	new_patient.save( function(err, patient) {
 		if (err)
 			res.send(err);
+		console.log();
+		// Move the upload directory to a new patients/id directory
+		var dir = './public/uploads/patients/'+new_patient._id+'/';
+		fs.rename("./public/uploads/temp", dir, function(error){
+			if(error)
+				throw error;
+			if (!fs.existsSync("./public/uploads/temp")){
+				fs.mkdirSync("./public/uploads/temp");
+			}
+		});
 		
 		// get and return all the patients after you create another
 		Patient.find(function(err, patients) {
@@ -232,6 +243,16 @@ var uploadFile = upload.array('datafile',20);
 				res.send(err);
 			}
 			
+			var dir = './public/uploads/eksetaseis/'+ eksetash._id + '/';
+			// Move the upload directory to a new eksetaseis/id directory
+			fs.rename("./public/uploads/temp", dir, function(error){
+				if(error)
+					throw error;
+				if (!fs.existsSync("./public/uploads/temp")){
+					fs.mkdirSync("./public/uploads/temp");
+				}
+			});
+			
 			// We added the eksetash. Time to return the updated eksetaseis array .
 			Eksetash.find( {'_patient' : patient._id} , function(err, eksetaseis) {
 				if (err) throw err;
@@ -282,6 +303,18 @@ var uploadFile = upload.array('datafile',20);
         res.sendfile('./public/doctors.html'); // load the single view file (angular will handle the page changes on the front-end)
     });	
 */
+
+
+
+	if (!fs.existsSync("./public/uploads/temp")){
+		fs.mkdirSync("./public/uploads/temp");
+	}			
+	if (!fs.existsSync("./public/uploads/eksetaseis")){
+		fs.mkdirSync("./public/uploads/eksetaseis");
+	}			
+	if (!fs.existsSync("./public/uploads/patients")){
+		fs.mkdirSync("./public/uploads/patients");
+	}			
 	
     // listen (start app with node server.js) ======================================
     app.listen(8080);
