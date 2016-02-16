@@ -216,17 +216,31 @@ var uploadFile = upload.array('datafile',20);
 		);
 		
     });	
+
+	var deleteFolderRecursive = function(path) {
+	  if( fs.existsSync(path) ) {
+		fs.readdirSync(path).forEach(function(file,index){
+		  var curPath = path + "/" + file;
+		  if(fs.lstatSync(curPath).isDirectory()) { // recurse
+			deleteFolderRecursive(curPath);
+		  } else { // delete file
+			fs.unlinkSync(curPath);
+		  }
+		});
+		fs.rmdirSync(path);
+	  }
+	};
 	
     // delete a patient
     app.delete('/api/patients/:patient_id', function(req, res) {
-
 	
 		Patient.findById(req.params.patient_id, function(err, patient) {
 		if (err) throw err;
 		  // delete him
 		  patient.remove(function(err) {
 			if (err) throw err;
-
+			deleteFolderRecursive('./public/uploads/patients/'+req.params.patient_id);
+			//TODO reccursively remove all eksetaseis from the removed patient.
             // get and return all the patients after you create another
             Patient.find(function(err, patients) {
                 if (err)
@@ -347,6 +361,7 @@ var uploadFile = upload.array('datafile',20);
 		  // delete him
 		  eksetash.remove(function(err) {
 			if (err) throw err;
+			deleteFolderRecursive('./public/uploads/eksetaseis/'+req.params.eksetash_id);
 
             // get and return all the eksetaseis after you create another
 			Eksetash.find( {'_patient' : req.params.patient_id} , function(err, eksetaseis) {
