@@ -7,6 +7,7 @@
 	*/
 
 	var Schema = mongoose.Schema;
+	var passportLocalMongoose = require('passport-local-mongoose');
 	var patientSchema = new Schema(
 	{
     amka: String,
@@ -472,9 +473,20 @@
 
 	});
 
-
+	var AccountSchema = new Schema(
+	{
+		username: String,
+		password: String,
+		nickname: String,
+		birthday: Date
+	});
+	
+	AccountSchema.plugin(passportLocalMongoose);
+	
     var Patient = mongoose.model('Patient', patientSchema);
     var Eksetash = mongoose.model('Eksetash', eksetashSchema);
+    var Account = mongoose.model('Account', AccountSchema);
 
 	module.exports.Patient = Patient;
 	module.exports.Eksetash = Eksetash;
+	module.exports.Account = Account;

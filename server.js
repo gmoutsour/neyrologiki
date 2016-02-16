@@ -11,6 +11,9 @@
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 	var multer = require('multer'); 
 	var fs = require('fs');
+	var session = require('express-session');
+	var passport = require('passport');
+	var LocalStrategy = require('passport-local').Strategy;
 	
     // configuration =================
 
@@ -20,12 +23,19 @@
 	//Connect to database
 	mongoose.connect( 'mongodb://localhost/doctor_database');
 
-    app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
     app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
     app.use(bodyParser.json());                                     // parse application/json
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
+    app.use(session({
+		secret : 'create authentications for neyrologikes eksetaseis',
+		resave : true,
+		saveUninitialized : false
+	}));
+
+	app.use(passport.initialize());
+	app.use(passport.session());
 
 	/*
 	MAP THE HTML INPUT INTO MONGOSE TABLES
@@ -34,7 +44,71 @@
 	var DBmodule = require('./patient');
 	var Patient = DBmodule.Patient;
 	var Eksetash = DBmodule.Eksetash;
+	var Account = DBmodule.Account;
+	
+	passport.use(Account.createStrategy());
 
+	passport.serializeUser(function(user, done) {
+	  done(null, user);
+	});
+
+	passport.deserializeUser(function(user, done) {
+	  done(null, user);
+	});
+	
+	passport.use(new LocalStrategy(function(username, password, done) {
+	  process.nextTick(function() {
+	
+		var user = new Account({
+		username: username,
+		password: password,
+		nickname : "",
+		birthday : ""
+		});
+		
+		if ( username=="test" && password=="test")
+			return done(null, user);	  
+		return done(null, false);
+		
+		//TODO actuall call mongodb schema to get the user credentials instead of keeping them here.
+		  /*
+		UserDetails.findOne({
+		  'username': username, 
+		}, function(err, user) {
+		  if (err) {
+			return done(err);
+		  }
+
+		  if (!user) {
+			return done(null, false);
+		  }
+
+		  if (user.password != password) {
+			return done(null, false);
+		  }
+
+		  return done(null, user);
+		});
+		*/
+	  });
+	}));
+	
+	app.get('/login', function(req, res) {
+	  res.sendfile('./public/login.html')
+	});
+
+	app.post('/login', passport.authenticate('local', {
+		successRedirect: '/patients',
+		failureRedirect: '/login'
+	  })
+	);
+	
+	/* Handle Logout */
+	app.get('/logout', function(req, res) {
+	  req.logout();
+	  res.redirect('/login');
+	});
+	
     // api ---------------------------------------------------------------------
     // get all Patients
     app.get('/api/patients', function(req, res) {
@@ -103,7 +177,7 @@ var uploadFile = upload.array('datafile',20);
 		var dir = './public/uploads/patients/'+new_patient._id+'/';
 		fs.rename("./public/uploads/temp", dir, function(error){
 			if(error)
-				throw error;
+				console.log("Couldn't move the directory");
 			if (!fs.existsSync("./public/uploads/temp")){
 				fs.mkdirSync("./public/uploads/temp");
 			}
@@ -247,7 +321,7 @@ var uploadFile = upload.array('datafile',20);
 			// Move the upload directory to a new eksetaseis/id directory
 			fs.rename("./public/uploads/temp", dir, function(error){
 				if(error)
-					throw error;
+					console.log("Couldn't move the directory");
 				if (!fs.existsSync("./public/uploads/temp")){
 					fs.mkdirSync("./public/uploads/temp");
 				}
@@ -288,23 +362,14 @@ var uploadFile = upload.array('datafile',20);
 	
     });
 
-
-
+    app.get('/patient*', function(req, res) {
+		if (req.user)
+			res.sendfile('./public/patients.html');
+		else
+			res.sendfile('./public/login.html');
+    });
 	
-    app.get('*', function(req, res) {
-		//res.sendfile('./public/page_404.html');
-		//res.json("ton mpoulo");
-		res.sendfile('./public/patients.html');
-    });	
-	
-/*	
-// SEND THE INDEX PAGE ON EEVERY REQUEST.
-    app.get('/doctors/*', function(req, res) {
-        res.sendfile('./public/doctors.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });	
-*/
-
-
+    app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 
 	if (!fs.existsSync("./public/uploads/temp")){
 		fs.mkdirSync("./public/uploads/temp");
