@@ -46,8 +46,8 @@
 	var Eksetash = DBmodule.Eksetash;
 	var Account = DBmodule.Account;
 	
+	//Basic login functionality . At this version we don't lookup any mongoose table. We just hardcode checking.
 	passport.use(Account.createStrategy());
-
 	passport.serializeUser(function(user, done) {
 	  done(null, user);
 	});
@@ -92,6 +92,36 @@
 		*/
 	  });
 	}));
+
+	//Basic file upload functionality . Rm dir and copy dir.
+	var deleteFolderRecursive = function(path) {
+	  if( fs.existsSync(path) ) {
+		fs.readdirSync(path).forEach(function(file,index){
+		  var curPath = path + "/" + file;
+		  if(fs.lstatSync(curPath).isDirectory()) { // recurse
+			deleteFolderRecursive(curPath);
+		  } else { // delete file
+			fs.unlinkSync(curPath);
+		  }
+		});
+		fs.rmdirSync(path);
+	  }
+	};
+
+	var moveFolderRecursive = function(path,path_to) {
+	  if( fs.existsSync(path) ) {
+		fs.readdirSync(path).forEach(function(file,index){
+		  var curPath = path + "/" + file;
+		  var curPath_to = path_to + "/" + file;
+		  if(fs.lstatSync(curPath).isDirectory()) { // recurse
+			moveFolderRecursive(curPath,curPath_to);
+		  } else { // move file
+			//fs.unlinkSync(curPath);//goro
+			fs.renameSync(curPath, curPath_to);
+		  }
+		});
+	  }
+	};
 	
 	app.get('/login', function(req, res) {
 	  res.sendfile('./public/login.html')
@@ -172,16 +202,13 @@ var uploadFile = upload.array('datafile',20);
 	new_patient.save( function(err, patient) {
 		if (err)
 			res.send(err);
-		console.log();
-		// Move the upload directory to a new patients/id directory
+		
 		var dir = './public/uploads/patients/'+new_patient._id+'/';
-		fs.rename("./public/uploads/temp", dir, function(error){
-			if(error)
-				console.log("Couldn't move the directory");
-			if (!fs.existsSync("./public/uploads/temp")){
-				fs.mkdirSync("./public/uploads/temp");
-			}
-		});
+		// Move the upload directory to a new patients/id directory
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir);
+		}
+		moveFolderRecursive("./public/uploads/temp/",dir);		
 		
 		// get and return all the patients after you create another
 		Patient.find(function(err, patients) {
@@ -202,7 +229,14 @@ var uploadFile = upload.array('datafile',20);
 				console.log("ERROR");
 				res.send(err);
 			}
-		
+
+		var dir = './public/uploads/patients/'+req.params.patient_id+'/';
+		// Move the upload directory to a new patients/id directory
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir);
+		}
+		moveFolderRecursive("./public/uploads/temp/",dir);		
+			
             // get and return all the patients after you create another
 				console.log("SUC1");
             Patient.find(function(err, patients) {
@@ -217,20 +251,6 @@ var uploadFile = upload.array('datafile',20);
 		
     });	
 
-	var deleteFolderRecursive = function(path) {
-	  if( fs.existsSync(path) ) {
-		fs.readdirSync(path).forEach(function(file,index){
-		  var curPath = path + "/" + file;
-		  if(fs.lstatSync(curPath).isDirectory()) { // recurse
-			deleteFolderRecursive(curPath);
-		  } else { // delete file
-			fs.unlinkSync(curPath);
-		  }
-		});
-		fs.rmdirSync(path);
-	  }
-	};
-	
     // delete a patient
     app.delete('/api/patients/:patient_id', function(req, res) {
 	
@@ -333,13 +353,10 @@ var uploadFile = upload.array('datafile',20);
 			
 			var dir = './public/uploads/eksetaseis/'+ eksetash._id + '/';
 			// Move the upload directory to a new eksetaseis/id directory
-			fs.rename("./public/uploads/temp", dir, function(error){
-				if(error)
-					console.log("Couldn't move the directory");
-				if (!fs.existsSync("./public/uploads/temp")){
-					fs.mkdirSync("./public/uploads/temp");
-				}
-			});
+			if (!fs.existsSync(dir)){
+				fs.mkdirSync(dir);
+			}
+			moveFolderRecursive("./public/uploads/temp/",dir);
 			
 			// We added the eksetash. Time to return the updated eksetaseis array .
 			Eksetash.find( {'_patient' : patient._id} , function(err, eksetaseis) {

@@ -112,6 +112,9 @@
 
     // when submitting the add form, send the text to the node API
     $scope.updatePatient = function(id) {
+	$scope.element_array = ["patient_file1" , "patient_file2"];
+	$scope.upload_files($scope.element_array,function ( ) {
+		
         $http.put('/api/patients/'+id, $scope.patientformData)
             .success(function(data) {
                 $scope.patientformData = {}; // clear the form so our user is ready to enter another
@@ -122,6 +125,7 @@
             .error(function(data) {
                 console.log('Error: ' + data);
             });
+		});
     };
 
     // delete a patient after checking it
