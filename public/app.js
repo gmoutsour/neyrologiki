@@ -1,15 +1,21 @@
 (function() {
-//  var app = angular.module('gemStore', ['ui.bootstrap']);
-  var app = angular.module('doctors', ['ui.bootstrap']);
 
 
-
+	
+  var app = angular.module('doctors', ['ui.bootstrap', 'angularUtils.directives.dirPagination']);
 
   app.controller('patientController', function($scope, $http){
 	$scope.patientformData = {};
 	$scope.patientformData.hmeromhnia_eggrafhs = new Date();
     $scope.show_tab = 1;
 
+$scope.sortKey="AMKA";
+
+  $scope.sort = function(keyname){
+        $scope.sortKey = keyname;   //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
+	
 	$scope.select_form_omotima = [
 		{
 		value: '0',
@@ -234,6 +240,7 @@
 	  ;
   });
 
+  
   app.controller('TabController', function(){
     this.tab = 1;
 

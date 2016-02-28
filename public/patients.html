@@ -177,34 +177,49 @@
 
         <!-- PATIENTS LIST -->
         <div id="patient-list" class="row" >
-			<form>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Αναζήτηση Ασθενών</label>
-				  <div class="col-sm-2">
-					<input type="text" class="form-control input-sm " placeholder="" ng-model="tablesearch.text">
-				  </div>
-				  <div class="col-sm-2">
-					<button type="submit" class="btn btn-primary btn-sm" ng-click="show_add_patient=true" >Προσθήκη Ασθενή</button>
-				  </div>
-				</div>
-			</form>
 
+   <form class="form-inline">
+        <div class="form-group">
+            <label >Αναζήτηση</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Αναζήτηση">
+        </div>
+    </form>
+   <dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+	
 			<!-- LOOP OVER THE patientS IN $scope.patients -->
-			<table class="table table-bordered">
+			<table class="table table-bordered table-hover">
 				<thead>
-				  <tr>
-					<th>ΑΜΚΑ</th>
-					<th>Όνοματεπώνυμο</th>
-					<th>Ημ. Γέννησης</th>
-					<th>Τηλέφωνο</th>
-					<th>Διεύθυνση</th>
-					<th>Πάθηση</th>
-					<th>Επεξ./Ανάλυση</th>
-					<th>Διαγραφή</th>
-				  </tr>
+					<tr>
+						<th ng-click="sort('AMKA')">ΑΜΚΑ
+							<span class="glyphicon sort-icon" ng-show="sortKey=='AMKA'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('onomateponymo')">Όνοματεπώνυμο
+							<span class="glyphicon sort-icon" ng-show="sortKey=='onomateponymo'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('hmeromhnia_gennhshs')">Ημ. Γέννησης
+							<span class="glyphicon sort-icon" ng-show="sortKey=='hmeromhnia_gennhshs'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('phone')">Τηλέφωνο
+							<span class="glyphicon sort-icon" ng-show="sortKey=='phone'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('dieythinsh')">Διεύθυνση
+							<span class="glyphicon sort-icon" ng-show="sortKey=='dieythinsh'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('pathiseis')">Πάθηση
+							<span class="glyphicon sort-icon" ng-show="sortKey=='pathiseis'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th >Επεξ./Ανάλυση
+						</th>
+						<th >Διαγραφή
+						</th>
+					</tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1 || patient.amka.indexOf(tablesearch.text) !=-1">
+				<tr dir-paginate="patient in patients|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
 					<td>{{ patient.amka  }}</td>
 					<td>{{ patient.onomateponymo}}</td>
 					<td>{{ patient.hmeromhnia_gennhshs |date : 'dd/MM/yyyy' }}</td>
@@ -215,8 +230,7 @@
 					<td><button type="submit"  class="btn btn-default btn-sm" value="" ng-click="deletepatient(patient._id)">Διαγραφή</button></td>
 				</tr>
 				</tbody>
-			</table>
-			
+			</table> 
 		</div>
     </div>
 
@@ -2026,6 +2040,7 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="ui-bootstrap-tpls-0.14.3.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="dirPagination.js"></script>
     <script type="text/javascript" src="app.js"></script>
 <!-- END OF ANGULAR SCRIPTS -->
 
