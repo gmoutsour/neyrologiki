@@ -52,3 +52,4 @@ Temporary Items
 
 db
 node_modules
+*.xlsx
