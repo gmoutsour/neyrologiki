@@ -204,7 +204,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1">
+				<tr ng-repeat="patient in patients" ng-show=" !tablesearch.text || patient.onomateponymo.indexOf(tablesearch.text) !=-1 || patient.amka.indexOf(tablesearch.text) !=-1">
 					<td>{{ patient.amka  }}</td>
 					<td>{{ patient.onomateponymo}}</td>
 					<td>{{ patient.hmeromhnia_gennhshs |date : 'dd/MM/yyyy' }}</td>
