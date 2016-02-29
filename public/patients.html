@@ -221,7 +221,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<tr dir-paginate="patient in patients|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+				<tr dir-paginate="patient in patients|orderBy:sortKey:reverse|filter:search|itemsPerPage:10">
 					<td>{{ patient.amka  }}</td>
 					<td>{{ patient.onomateponymo}}</td>
 					<td>{{ patient.hmeromhnia_gennhshs |date : 'dd/MM/yyyy' }}</td>
