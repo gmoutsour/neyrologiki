@@ -237,7 +237,7 @@
     </div>
 
 	<!-- Content of a Sinlge Pelath -->
-	<div ng-hide="show_add_eksetash">
+	<div ng-hide="show_add_eksetash || show_add_farmako">
 	<div class="panel panel-default hideByDefault" name="asthenis_stoixeia" ng-show="show_add_patient">
 
 		<div class="panel-body" name="basika_stoixeia" style="border: 1px solid #888; ">
@@ -440,6 +440,11 @@
 		<div class="table table-bordered"  ng-show="patientformData._id && !eksetaseis.length">
 		  <h3 class="m-n font-thin h5">Δεν υπάρχουν Εξέτασεις για αυτόν τον ασθενή</h3>
 		</div>
+	   <dir-pagination-controls
+		   max-size="5"
+		   direction-links="true"
+		   boundary-links="true" >
+		</dir-pagination-controls>
 		<table class="table table-bordered"  ng-show="patientformData._id && eksetaseis.length">
 			<thead>
 			  <tr>
@@ -450,7 +455,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="eksetash in eksetaseis" >
+			<tr dir-paginate="eksetash in eksetaseis|orderBy:sortKey:false|filter:search|itemsPerPage:5">
 				<td>{{ eksetash.hmeromhnia |date : 'dd/MM/yyyy' }}</td>
 				<td colspan=2>{{ eksetash.shmeiwseis }}</td>
 				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="get_single_eksetash(eksetash._id)">Αναλυτικά</button></td>
@@ -459,6 +464,39 @@
 			</tbody>
 		</table>
 	</div>
+
+	<!-- TABLE OF Farmaka-->
+	<div class="bg-light lter b-b wrapper-md" ng-show="patientformData._id" style="border: 1px solid #888; ">
+		<h1 class="m-n font-thin h3">Ιστορικό Φαρμάκων</h1>
+		<button type="submit" class="btn btn-primary btn-sm" ng-click="show_add_farmako=true" >Προσθήκη Ιστορικού Φαρμάκου</button>
+		<div class="table table-bordered"  ng-show="patientformData._id && !farmaka.length">
+		  <h3 class="m-n font-thin h5">Δεν υπάρχει Ιστορικό Φαρμάκων για αυτόν τον ασθενή</h3>
+		</div>
+		
+		<table class="table table-bordered"  ng-show="patientformData._id && farmaka.length">
+			<thead>
+			  <tr>
+				<th >Ονομασία Φαρμάκου</th>
+				<th colspan=2>Σημειώσεις</th>
+				<th >Ημερομηνία Έναρξης</th>
+				<th >Ημερομηνία Λήξης</th>
+				<th >Αναλυτικά</th>
+				<th >Διαγραφή</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="farmako in farmaka" >
+				<td>{{ farmako.name }}</td>
+				<td colspan=2>{{ farmako.shmeiwseis }}</td>
+				<td>{{ farmako.hmeromhnia_from |date : 'dd/MM/yyyy' }}</td>
+				<td>{{ farmako.hmeromhnia_to |date : 'dd/MM/yyyy' }}</td>
+				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="get_single_farmako(farmako._id)">Αναλυτικά</button></td>
+				<td><button type="submit"  class="btn btn-primary btn-sm" value="" ng-click="delete_single_farmako(farmako._id, farmako._patient)">Διαγραφή</button></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	
 	</div>
 
 	<!-- START OF NEYROLOGIKH EKSETASH. -->
@@ -2010,7 +2048,21 @@
 	</form>
 
 
+	<!-- START OF ΦΑΡΜΑΚΟ. -->
+	<div class="wrapper-md" name="neyrologikh_eksetash" ng-show="patientformData._id && show_add_farmako" style="border: 1px solid #888; ">
+	<div class="bg-light lter b-b wrapper-md">
+	  <h1 class="m-n font-thin h3">Φάρμακο</h1>
+	</div>
 
+	<form class="form-inline" role="form" name="farmakoForm">
+		<button type="submit" class="btn btn-primary btn-sm" ng-click=" createFarmako(patientformData._id)">Προσθήκη</button>
+		<button type="submit" class="btn btn-default btn-sm" ng-click=" cancelFarmako(patientformData._id)">Πίσω</button>
+		<input type="text"  ng-model="farmakoFormData.name" placeholder="Ονομασία Φαρμάκου"  class="col-sm-10" >
+		<input type="text"  ng-model="farmakoFormData.shmeiwseis" placeholder="Σημειώσεις"  class="col-sm-10" >
+		<input type="text"  ng-model="farmakoFormData.hmeromhnia_from" placeholder="Από"  class="col-sm-10" >
+		<input type="text"  ng-model="farmakoFormData.hmeromhnia_to" placeholder="Έως"  class="col-sm-10" >
+	</form>
+	</div>
 
 </div>
 

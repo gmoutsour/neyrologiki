@@ -473,6 +473,16 @@
 
 	});
 
+	var FarmakoSchema = new Schema(
+	{
+		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
+		name : String,
+		shmeiwseis : String, 
+		hmeromhnia_from : String,
+		hmeromhnia_to : String
+	});
+	
+	
 	var AccountSchema = new Schema(
 	{
 		username: String,
@@ -485,8 +495,10 @@
 	
     var Patient = mongoose.model('Patient', patientSchema);
     var Eksetash = mongoose.model('Eksetash', eksetashSchema);
+    var Farmako = mongoose.model('Farmako', FarmakoSchema);
     var Account = mongoose.model('Account', AccountSchema);
 
 	module.exports.Patient = Patient;
 	module.exports.Eksetash = Eksetash;
+	module.exports.Farmako = Farmako;
 	module.exports.Account = Account;

@@ -44,6 +44,7 @@
 	var DBmodule = require('./patient');
 	var Patient = DBmodule.Patient;
 	var Eksetash = DBmodule.Eksetash;
+	var Farmako = DBmodule.Farmako;
 	var Account = DBmodule.Account;
 	
 	//Basic login functionality . At this version we don't lookup any mongoose table. We just hardcode checking.
@@ -394,6 +395,100 @@ var uploadFile = upload.array('datafile',20);
 	
     });
 
+
+    // api ---------------------------------------------------------------------
+	// FARMAKA FUNCTIONALITY
+
+    // get all Farmaka
+    app.get('/api/farmaka', function(req, res) {
+
+        // use mongoose to get all patients in the database
+        Farmako.find(function(err, farmaka) {
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err)
+            res.json(farmaka); // return all patients in JSON format
+        });
+    });	
+	
+	// get farmaka that belong to a patient.
+    app.get('/api/farmaka/:patient_id', function(req, res) {
+		
+		Farmako.find( {'_patient' : req.params.patient_id} , function(err, farmaka) {
+		if (err) throw err;
+		// show the one user
+		console.log("BRHKA Ta Farmaka " + farmaka);
+		res.json(farmaka); // return all patients in JSON format
+		});		
+
+    });
+
+	// get single Farmako by id.
+    app.get('/api/farmaka/by_id/:farmako_id', function(req, res) {
+		
+		Farmako.findById( req.params.farmako_id , function(err, farmako) {
+		if (err) throw err;
+		// show the one user
+		console.log("BRHKA TIS farmako " + farmako);
+		res.json(farmako); // return all farmako in JSON format
+		});		
+
+    });
+	
+    // create farmako that belongs to a patient
+    app.post('/api/farmaka/:patient_id', function(req, res) {
+		console.log("ADDING farmako FOR" + req.params.patient_id);
+		console.log(req.body)
+
+		Patient.findById(req.params.patient_id, function(error, patient) {
+			if (error) {
+				console.log("ERROR");
+				}
+
+			var farmako = new Farmako(req.body);
+			farmako._patient= patient._id;
+			farmako.save(function (err) {
+			if (err) {
+				res.send(err);
+			}
+			
+			// We added the eksetash. Time to return the updated eksetaseis array .
+			Farmako.find( {'_patient' : patient._id} , function(err, farmaka) {
+				if (err) throw err;
+				res.json(farmaka); 
+				});				
+			
+			});
+
+		});	
+		
+    });
+
+    // delete a farmako and return the rest of farmaka that belong to a patient.
+    app.delete('/api/farmaka/by_id/:farmako_id/:patient_id', function(req, res) {
+
+		Farmako.findById(req.params.farmako_id, function(err, farmako) {
+		if (err) throw err;
+		  // delete him
+		  farmako.remove(function(err) {
+			if (err) throw err;
+
+            // get and return all the eksetaseis after you create another
+			Farmako.find( {'_patient' : req.params.patient_id} , function(err, farmaka) {
+			if (err) throw err;
+			// show the one user
+			console.log("BRHKA TIS farmaka " + farmaka);
+			res.json(farmaka); // return all farmaka in JSON format
+			});			
+			
+		  });
+  
+		});		
+	
+    });
+
+	
+	
     app.get('/patient*', function(req, res) {
 		if (req.user)
 			res.sendfile('./public/patients.html');

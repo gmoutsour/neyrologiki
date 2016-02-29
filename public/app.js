@@ -10,6 +10,7 @@
     $scope.show_tab = 1;
 
 $scope.sortKey="AMKA";
+$scope.sortKey2="hmeromhnia";
 
   $scope.sort = function(keyname){
         $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -60,7 +61,10 @@ $scope.sortKey="AMKA";
 
 		// get all eksetaseis . Call the function created in the eksetaseis section bellow.
 		if (id)
+			{
 			$scope.geteksetaseis(id);
+			$scope.getfarmaka(id);
+			}
 
     };
 
@@ -214,7 +218,7 @@ $scope.sortKey="AMKA";
 		$scope.show_add_eksetash=false;
     };
 
-    // get all eksetaseis
+    // delete single eksetaseis
     $scope.delete_single_eksetash = function(eksetash_id,patient_id) {
         $http.delete('/api/eksetaseis/by_id/'+eksetash_id+'/'+patient_id)
             .success(function(data) {
@@ -226,6 +230,69 @@ $scope.sortKey="AMKA";
             });
     };
 
+    // get all farmaka
+    $scope.getfarmaka = function(id) {
+        $http.get('/api/farmaka/' + id)
+            .success(function(data) {
+                $scope.farmaka = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+    // get a single patient after checking it
+    $scope.get_single_farmako = function(id) {
+        $http.get('/api/farmaka/by_id/' + id)
+            .success(function(data) {
+                $scope.farmakoFormData = data;
+				$scope.show_add_farmako=true;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+    // when submitting the add form, send the text to the node API
+    $scope.createFarmako = function(id) {
+		// Fix in case we want to add a new eksetash by using data from an existing one.
+		delete $scope.farmakoFormData._id;
+		
+        $http.post('/api/farmaka/'+id, $scope.farmakoFormData)
+            .success(function(data) {
+				$scope.farmaka = data;
+				$scope.farmakoFormData ={};
+				//TODO clean the input file elements.
+				$scope.show_add_farmako=false;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+
+			
+			
+    };
+	
+    $scope.cancelFarmako = function(id) {
+		$scope.eksetashFormData ={};
+		$scope.show_add_farmako=false;
+    };
+
+    // delete single farmako
+    $scope.delete_single_farmako = function(farmako_id,patient_id) {
+        $http.delete('/api/farmaka/by_id/'+farmako_id+'/'+patient_id)
+            .success(function(data) {
+                $scope.farmaka = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+//////////////////	
+	
     $scope.setTab = function(newValue){
 	  $scope.show_tab = newValue;
     };
