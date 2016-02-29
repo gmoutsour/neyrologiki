@@ -222,9 +222,9 @@ var uploadFile = upload.array('datafile',20);
 
     // create patient and send back all patients after creation
     app.put('/api/patients/:patient_id', function(req, res) {
-
+		var previous_id=req.body._id;
 		delete req.body._id;
-		Patient.findByIdAndUpdate(req.params.patient_id, req.body, function(err, patient){
+		Patient.findByIdAndUpdate(previous_id, req.body, function(err, patient){
 			if (err)
 			{
 				console.log("ERROR");
@@ -464,6 +464,27 @@ var uploadFile = upload.array('datafile',20);
 		
     });
 
+    // update farmako and send back all patients after creation
+    app.put('/api/farmaka/:patient_id', function(req, res) {
+		var previous_id=req.body._id;
+		delete req.body._id;
+		Farmako.findByIdAndUpdate(previous_id, req.body, function(err, farmako){
+			if (err)
+			{
+				console.log("ERROR");
+				res.send(err);
+			}
+            // get and return all the patients after you create another
+			Farmako.find( {'_patient' : req.params.patient_id} , function(err, farmaka) {
+            //Farmako.find(function(err, farmaka) {
+                if (err)
+                    res.send(err)
+                res.json(farmaka);
+				});
+			}
+		);
+    });	
+	
     // delete a farmako and return the rest of farmaka that belong to a patient.
     app.delete('/api/farmaka/by_id/:farmako_id/:patient_id', function(req, res) {
 

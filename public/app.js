@@ -269,13 +269,28 @@ $scope.sortKey2="hmeromhnia";
             .error(function(data) {
                 console.log('Error: ' + data);
             });
-
-			
-			
     };
 	
+    // when submitting the add form, send the text to the node API
+    $scope.updateFarmako = function(id) {
+	$http.put('/api/farmaka/'+id, $scope.farmakoFormData)
+		.success(function(data) {
+			$scope.farmaka = data;
+			$scope.farmakoFormData ={};
+			//TODO clean the input file elements.
+			$scope.show_add_farmako=false;			
+			
+		})
+		.error(function(data) {
+			alert("updateFarmako FAIL");
+			console.log('Error: ' + data);
+		});
+
+    };	
+	
+	
     $scope.cancelFarmako = function(id) {
-		$scope.eksetashFormData ={};
+		$scope.farmakoFormData ={};
 		$scope.show_add_farmako=false;
     };
 
