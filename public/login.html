@@ -52,7 +52,7 @@
         </div>
         <!-- / buttons -->
 
-        
+
 
         <!-- search form -->
 		<!-- GORO THIS SEARCH BUTTON DEFINES A NEW ng-controller that overides ours. Needs to be commented out.
@@ -77,9 +77,9 @@
               <span class="visible-xs-inline">Notifications</span>
               <span class="badge badge-sm up bg-danger pull-right-xs">PatientPlus</span>
             </a>
-           
+
           </li>
-          
+
         </ul>
         <!-- / navbar right -->
       </div>
@@ -87,95 +87,44 @@
   </header>
 <!-- / header -->
 
-<!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
-      <div class="aside-wrap">
-        <div class="navi-wrap">
-         
 
-          <!-- nav -->
-          <nav ui-nav class="navi clearfix">
-            <ul class="nav">
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Navigation</span>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                  <span class="font-bold">Αρχείο Ασθενών</span>
-                </a>
-               </li>
-			   <li>
-                <a href="logout">
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Αποσύνδεση</span>
-                </a>
-              </li>
-              <li class="line dk"></li>
- 
-                  
-            </ul>
-              
-              
+  <div class="app app-header-fixed ">
 
-             
 
-             
-              
-             
-            </ul>
-          </nav>
-          <!-- nav -->
+  <div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+    <a href class="navbar-brand block m-t">Patient Plus</a>
+    <div class="m-b-lg">
+      <div class="wrapper text-center">
+        <strong>Συμπληρώστε τα στοιχεία σας για να εισέλθετε στην εφαρμογή</strong>
+      </div>
+      <form name="form" class="form-validation" action="/login" method="post">
+        <div class="text-danger wrapper text-center" ng-show="authError">
 
-          <!-- aside footer -->
-          <div class="wrapper m-t">
-            <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">PatientPlus</span>
-              <span class="hidden-folded">Version 1</span>
-            </div>
-            <div class="progress progress-xxs m-t-sm dk">
-              <div class="progress-bar progress-bar-info" style="width: 100%;">
-              </div>
-            </div>
-            <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">1.05</span>
-              <span class="hidden-folded">Release</span>
-            </div>
-            <div class="progress progress-xxs m-t-sm dk">
-              <div class="progress-bar progress-bar-primary" style="width: 100%;">
-              </div>
-            </div>
-          </div>
-          <!-- / aside footer -->
         </div>
-      </div>
-  </aside>
-<!-- / aside -->
+        <div class="list-group list-group-sm">
+          <div class="list-group-item">
+            <input type="text" placeholder="όνομα" class="form-control no-border" ng-model="user.email" required name="username" >
+          </div>
+          <div class="list-group-item">
+             <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required name="password" >
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" value="Submit" >Log in</button>
 
-<!-- content -->
-<div id="content" class="app-content" role="main">
+        <div class="line line-dashed"></div>
+        <p class="text-center"><small>----</small></p>
 
-    <form action="/login" method="post">
-      <div>
-        <label>Όνομα χρήστη:</label>
-        <input type="text" name="username" />
-        <br/>
-      </div>
-      <div>
-        <label>Κωδικός:</label>
-        <input type="password" name="password" />
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+      <p>
+    <small class="text-muted">Web app framework for medical Data: Patient Plus<br>&copy; 2016</small>
+  </p>
+    </div>
+  </div>
 
-</div>
-  <!-- /content -->
+
+  </div>
 
 
 
