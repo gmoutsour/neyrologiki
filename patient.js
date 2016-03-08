@@ -43,7 +43,7 @@
 	var eksetashSchema = new Schema(
 	{
 		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
-		hmeromhnia : Date,
+		hmeromhnia : String,
 		shmeiwseis : String,
 		eksetash_file1 : String,
 		eksetash_file2 : String,
