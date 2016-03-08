@@ -477,12 +477,13 @@
 	{
 		_patient : { type: Schema.Types.ObjectId, ref: 'Patient' },
 		name : String,
-		shmeiwseis : String, 
+		sygentrosi : String,
+    dosage : String,
 		hmeromhnia_from : String,
 		hmeromhnia_to : String
 	});
-	
-	
+
+
 	var AccountSchema = new Schema(
 	{
 		username: String,
@@ -490,9 +491,9 @@
 		nickname: String,
 		birthday: Date
 	});
-	
+
 	AccountSchema.plugin(passportLocalMongoose);
-	
+
     var Patient = mongoose.model('Patient', patientSchema);
     var Eksetash = mongoose.model('Eksetash', eksetashSchema);
     var Farmako = mongoose.model('Farmako', FarmakoSchema);

@@ -238,7 +238,7 @@
 
 	<!-- Content of a Sinlge Pelath -->
 	<div ng-hide="show_add_eksetash || show_add_farmako">
-	<div class="panel panel-default hideByDefault" name="asthenis_stoixeia" ng-show="show_add_patient">
+	<div class="panel panel-info " name="asthenis_stoixeia" ng-show="show_add_patient">
 
 		<div class="panel-body" name="basika_stoixeia" style="border: 1px solid #888; ">
 			<div class="panel-heading font-bold">
@@ -286,7 +286,7 @@
 		</div>
 
 		<div style="border: 1px solid #888; ">
-		<div class="panel panel-default"  name="atomiko_istoriko">
+		<div class="panel panel-info"  name="atomiko_istoriko">
 			<div class="panel-heading font-bold">
 			  Ατομικό Ιστορικό
 			</div>
@@ -395,9 +395,9 @@
 			  </div>
 		</div>
 
-		<div class="line line-dashed b-b line-lg pull-in" name="spacer_div"></div>
+		<!-- <div class="line line-dashed b-b line-lg pull-in" name="spacer_div"></div> -->
 
-		<div class="panel panel-default "  name="oikogeneiako_istoriko" >
+		<div class="panel panel-info "  name="oikogeneiako_istoriko" >
 			<div class="panel-heading font-bold">
 			  Οικογενειακό Ιστορικό
 			</div>
@@ -434,8 +434,12 @@
 	</div>
 
 	<!-- TABLE OF EKSETASEIS-->
-	<div class="bg-light lter b-b wrapper-md" ng-show="patientformData._id" style="border: 1px solid #888; ">
-		<h1 class="m-n font-thin h3">Ιστορικό Εξέτασεων</h1>
+	<div class="panel panel-info" ng-show="patientformData._id" style="border: 1px solid #888; ">
+		<!-- <h1 class="m-n font-thin h3">Ιστορικό Εξέτασεων</h1> -->
+    <div class="panel-heading font-bold">
+      Ιστορικό Εξέτασεων
+    </div>
+    <div class="panel-body">
 		<button type="submit" class="btn btn-primary btn-sm" ng-click="show_add_eksetash=true" >Προσθήκη Εξέτασης</button>
 		<div class="table table-bordered"  ng-show="patientformData._id && !eksetaseis.length">
 		  <h3 class="m-n font-thin h5">Δεν υπάρχουν Εξέτασεις για αυτόν τον ασθενή</h3>
@@ -464,6 +468,7 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 
 	<!-- TABLE OF Farmaka-->
 	<div class="bg-light lter b-b wrapper-md" ng-show="patientformData._id" style="border: 1px solid #888; ">
@@ -500,17 +505,43 @@
 	</div>
 
 	<!-- START OF NEYROLOGIKH EKSETASH. -->
-	<div class="wrapper-md" name="neyrologikh_eksetash" ng-show="patientformData._id && show_add_eksetash" style="border: 1px solid #888; ">
+	<div class="panel panel-info" name="neyrologikh_eksetash" ng-show="patientformData._id && show_add_eksetash" style="border: 1px solid #888; ">
 
-	<div class="bg-light lter b-b wrapper-md">
-	  <h1 class="m-n font-thin h3">Νευρολογική Εξέταση</h1>
+	<div class="panel-heading font-bold">
+    Νευρολογική Εξέταση
+	  <!-- <h1 class="m-n font-thin h3">Νευρολογική Εξέταση</h1> -->
 	</div>
-
-	<form class="form-inline" role="form" name="eksetashForm">
+  <div class="panel-body">
+	<form class="form" role="form" name="eksetashForm">
+    <div class="form-group">
 		<button type="submit" class="btn btn-primary btn-sm" ng-click=" createEksetash(patientformData._id)">Προσθήκη</button>
 		<button type="submit" class="btn btn-default btn-sm" ng-click=" cancelEksetash(patientformData._id)">Πίσω</button>
+    </div>
 
-		<input type="text"  ng-model="eksetashFormData.shmeiwseis" placeholder="Περίληψη"  class="col-sm-10" >
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Σημειώσεις</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Περίληψη" ng-model="eksetashFormData.shmeiwseis"
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Ημ. Εξέτ.</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" placeholder="Ημερομηνία εξέτασης" ng-model="eksetashFormData.hmeromhnia|date : 'dd/MM/yyyy'" >
+      </div>
+    </div>
+
+
+    <!-- <div class="form-group">
+      <label class="col-lg-2 control-label">Ημερομηνία εξέτασης</label>
+      <div class="col-lg-10">
+        <input type="text" class="col-sm-10" id="exampleInputEmail2" placeholder="Περίληψη" ng-model="eksetashFormData.shmeiwseis"
+        <span class="help-block m-b-none">Example block-level help text here.</span>
+      </div>
+    </div> -->
+
+		<!-- <input type="text"  ng-model="eksetashFormData.shmeiwseis" placeholder="Περίληψη"  class="col-sm-10" > -->
 
 
 
@@ -2042,11 +2073,12 @@
 				</div>
 
 			</div>
-			</div>
+
 
 		</section>
 	</form>
-
+  </div>
+  </div>
 
 	<!-- START OF ΦΑΡΜΑΚΟ. -->
 	<div class="wrapper-md" name="neyrologikh_eksetash" ng-show="patientformData._id && show_add_farmako" style="border: 1px solid #888; ">
@@ -2054,7 +2086,7 @@
 	  <h1 class="m-n font-thin h3">Φαρμακευτική Αγωγή</h1>
 	</div>
 
-	<form class="form-inline" role="form" name="farmakoForm">
+	<!-- <form class="form-inline" role="form" name="farmakoForm">
 		<button type="submit" class="btn btn-primary btn-sm" ng-hide="farmakoFormData._id" ng-click=" createFarmako(patientformData._id)">Προσθήκη</button>
 		<button type="submit" class="btn btn-primary btn-sm" ng-show="farmakoFormData._id" ng-click=" updateFarmako(patientformData._id)">Αποθήκευση</button>
 		<button type="submit" class="btn btn-default btn-sm" ng-click=" cancelFarmako(patientformData._id)">Πίσω</button>
@@ -2066,9 +2098,9 @@
 
 
     <div class="line line-dashed b-b line-lg pull-in"></div>
-	</form>
+	</form> -->
 
-  <div class="panel panel-default">
+  <div class="panel panel-info">
     <div class="panel-heading font-bold">
       ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ
     </div>
