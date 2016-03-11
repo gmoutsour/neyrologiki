@@ -54,17 +54,19 @@
 		eksetash_file7 : String,
 		eksetash_file8 : String,
 		egkefalikes_syzigies : {
-			global : Boolean ,
 			neyrologiki_right : {
-				global : Boolean ,
+				global_nai : Boolean ,
+				global_oxi : Boolean ,
 				field_2 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					optiki_oksitita : String ,
 					optika_pedia : String ,
 					shmeiwseis : String
 					},
 				field_3 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					kores : {
 						myhsh : Boolean ,
 						mydriash : Boolean
@@ -75,23 +77,27 @@
 					shmeiwseis : String
 					},
 				field_4 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diplwpia : Boolean ,
 					shmeiwseis : String
 					},
 				field_6 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diplwpia : Boolean ,
 					shmeiwseis : String
 					},
 				field_5 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					V1 : Boolean ,
 					V2 : Boolean ,
 					V3 : Boolean
 					},
 				field_7 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					anw : Boolean ,
 					katw : Boolean ,
 					diataraxh_geyshs : Boolean ,
@@ -99,7 +105,8 @@
 					shmeiwseis : String
 					},
 				field_8 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					nystagmos : {
 						check :Boolean ,
 						shmeiwseis : String
@@ -123,7 +130,8 @@
 					shmeiwseis : String
 					},
 				field_9 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diataraxi_anypsews_malthakis_yperwas : {
 						check :Boolean ,
 						shmeiwseis :String
@@ -151,11 +159,13 @@
 					shmeiwseis : String
 					},
 				field_10 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					shmeiwseis : String
 					},
 				field_11 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					sternokl : {
 						k_f : Boolean,
 						oxi : Boolean,
@@ -169,7 +179,8 @@
 					shmeiwseis : String
 					},
 				field_12 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					thesh_glwssas : {
 						k_f : Boolean,
 						oxi : Boolean,
@@ -177,16 +188,19 @@
 					shmeiwseis : String
 					}
 			},
-			neyrologiki_left: {
-				global : Boolean ,
+			neyrologiki_left : {
+				global_nai : Boolean ,
+				global_oxi : Boolean ,
 				field_2 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					optiki_oksitita : String ,
 					optika_pedia : String ,
 					shmeiwseis : String
 					},
 				field_3 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					kores : {
 						myhsh : Boolean ,
 						mydriash : Boolean
@@ -197,23 +211,27 @@
 					shmeiwseis : String
 					},
 				field_4 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diplwpia : Boolean ,
 					shmeiwseis : String
 					},
 				field_6 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diplwpia : Boolean ,
 					shmeiwseis : String
 					},
 				field_5 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					V1 : Boolean ,
 					V2 : Boolean ,
 					V3 : Boolean
 					},
 				field_7 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					anw : Boolean ,
 					katw : Boolean ,
 					diataraxh_geyshs : Boolean ,
@@ -221,7 +239,8 @@
 					shmeiwseis : String
 					},
 				field_8 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					nystagmos : {
 						check :Boolean ,
 						shmeiwseis : String
@@ -245,7 +264,8 @@
 					shmeiwseis : String
 					},
 				field_9 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					diataraxi_anypsews_malthakis_yperwas : {
 						check :Boolean ,
 						shmeiwseis :String
@@ -273,11 +293,13 @@
 					shmeiwseis : String
 					},
 				field_10 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					shmeiwseis : String
 					},
 				field_11 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					sternokl : {
 						k_f : Boolean,
 						oxi : Boolean,
@@ -291,18 +313,20 @@
 					shmeiwseis : String
 					},
 				field_12 : {
-					check : Boolean ,
+					check_nai : Boolean ,
+					check_oxi : Boolean ,
 					thesh_glwssas : {
 						k_f : Boolean,
 						oxi : Boolean,
 						},
 					shmeiwseis : String
 					}
-			}
+			},
 		},
 		kinhtikothta : {
 			myikh_isxys : {
-				global : Boolean,
+				global_nai : Boolean,
+				global_oxi : Boolean,
 				kentrikou_typou : {
 					check : Boolean,
 					hmiparesh : Boolean,
@@ -315,7 +339,8 @@
 
 			},
 			myikh_tonos : {
-				global : Boolean,
+				global_nai : Boolean,
+				global_oxi : Boolean,
 				dyskampsia : Boolean,
 				spastikothta : Boolean,
 				shmeio_odontotou_troxou : Boolean,
@@ -323,7 +348,8 @@
 			}
 		},
 		myikh_atrofia : {
-			global : Boolean ,
+			global_nai : Boolean ,
+			global_oxi : Boolean ,
 			wmiki_zwnh : {
 				right : Boolean,
 				left : Boolean
@@ -381,8 +407,10 @@
 		},
 		paregkefalidikes_dokimasies : {
 			global : Boolean ,
-			right : Boolean ,
-			left : Boolean ,
+			right_nai : Boolean ,
+			right_oxi : Boolean ,
+			left_nai : Boolean ,
+			left_oxi : Boolean ,
 			deikths_rina : {
 				right : Boolean ,
 				left : Boolean
