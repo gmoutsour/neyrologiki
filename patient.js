@@ -18,6 +18,7 @@
 		phone : String,
     disease: String,
 		atomika : {
+      nosos : String,
 			smoke : Boolean ,
 			alkool : Boolean,
 			allergies : Boolean,
@@ -37,7 +38,10 @@
 				}
 			},
 		oikogeneiako : {
-			mhtera : String
+			mhtera : String,
+      pateras: String,
+      aderfia: String,
+      alloi: String
 		},
 			patient_file1 : String,
 	patient_file2 : String
