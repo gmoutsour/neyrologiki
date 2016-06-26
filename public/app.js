@@ -140,6 +140,10 @@ $scope.sortKey2="hmeromhnia";
 
     // delete a patient after checking it
     $scope.deletepatient = function(id) {
+		if (!confirm('Είσαστε βέβαιος για την διαγραφή του ασθενούς;')) {
+			return;
+		}
+
         $http.delete('/api/patients/' + id)
             .success(function(data) {
                 $scope.patients = data;
@@ -189,7 +193,6 @@ $scope.sortKey2="hmeromhnia";
 
     // when submitting the add form, send the text to the node API
     $scope.createEksetash = function(id) {
-		// Fix in case we want to add a new eksetash by using data from an existing one.
 		delete $scope.eksetashFormData._id;
 	//	$scope.eksetashFormData.hmeromhnia = new Date();
 		$scope.element_array = ["eksetash_file1" , "eksetash_file2" , "eksetash_file3" , "eksetash_file4" , "eksetash_file5" , "eksetash_file6" , "eksetash_file7" , "eksetash_file8"];
@@ -213,6 +216,27 @@ $scope.sortKey2="hmeromhnia";
 
     };
 
+    // when submitting the update form, send the text to the node API
+    $scope.updateEksetash = function(id) {
+		$scope.element_array = ["eksetash_file1" , "eksetash_file2" , "eksetash_file3" , "eksetash_file4" , "eksetash_file5" , "eksetash_file6" , "eksetash_file7" , "eksetash_file8"];
+
+	$scope.upload_files($scope.element_array,function ( ) {
+
+
+        $http.put('/api/eksetaseis/'+id, $scope.eksetashFormData)
+            .success(function(data) {
+				$scope.eksetaseis = data;
+				$scope.eksetashFormData ={};
+				//TODO clean the input file elements.
+				$scope.show_add_eksetash=false;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+		});
+    };
+	
+	
     $scope.cancelEksetash = function(id) {
 		$scope.eksetashFormData ={};
 		$scope.show_add_eksetash=false;
@@ -220,6 +244,11 @@ $scope.sortKey2="hmeromhnia";
 
     // delete single eksetaseis
     $scope.delete_single_eksetash = function(eksetash_id,patient_id) {
+		
+		if (!confirm('Είσαστε βέβαιος για την διαγραφή της εξέτασης;')) {
+			return;
+		}
+		
         $http.delete('/api/eksetaseis/by_id/'+eksetash_id+'/'+patient_id)
             .success(function(data) {
                 $scope.eksetaseis = data;
@@ -296,6 +325,10 @@ $scope.sortKey2="hmeromhnia";
 
     // delete single farmako
     $scope.delete_single_farmako = function(farmako_id,patient_id) {
+		if (!confirm('Είσαστε βέβαιος για την διαγραφή του φαρμάκου;')) {
+			return;
+		}
+
         $http.delete('/api/farmaka/by_id/'+farmako_id+'/'+patient_id)
             .success(function(data) {
                 $scope.farmaka = data;

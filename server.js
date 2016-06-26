@@ -371,6 +371,46 @@ var uploadFile = upload.array('datafile',20);
 		
     });
 
+
+    // update eksetash that belongs to a patient
+    app.put('/api/eksetaseis/:patient_id', function(req, res) {
+		console.log("Updating EKSETASH FOR" + req.params.patient_id);
+		console.log(req.body)
+		var previous_id=req.body._id;
+		delete req.body._id;
+
+		Patient.findById(req.params.patient_id, function(error, patient) {
+			if (error) {
+				console.log("ERROR");
+				}
+
+			Eksetash.findByIdAndUpdate(previous_id, req.body, function(err, eksetash){
+			if (err)
+			{
+				console.log("ERROR");
+				res.send(err);
+			}
+			
+			var dir = './public/uploads/eksetaseis/'+ eksetash._id + '/';
+			console.log("DIRECTORY" + dir);
+			// Move the upload directory to a new eksetaseis/id directory
+			if (!fs.existsSync(dir)){
+				fs.mkdirSync(dir);
+			}
+			moveFolderRecursive("./public/uploads/temp/",dir);
+			
+			// We added the eksetash. Time to return the updated eksetaseis array .
+			Eksetash.find( {'_patient' : patient._id} , function(err, eksetaseis) {
+				if (err) throw err;
+				res.json(eksetaseis); 
+				});				
+			
+			});
+
+		});	
+		
+    });
+	
     // delete an eksetash and return the rest of eksetaseis that belong to a patient.
     app.delete('/api/eksetaseis/by_id/:eksetash_id/:patient_id', function(req, res) {
 
