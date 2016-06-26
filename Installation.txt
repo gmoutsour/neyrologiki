@@ -12,3 +12,9 @@ Install node as windows service:
 Run services to check the validity of installation.
 Start services and check the output of : http://127.0.0.1:8080/whatever
 	
+-------------------------------------------------------------------------
+Run for dev purposes
+-------------------------------------------------------------------------
+1. go to folder of mongoDB installation
+	C:\Program Files\MongoDB\Server\3.2\bin
+2. mongod --port 27017 --dbpath C:/Users/g.zarifis/Documents/Projects/neyrologiki/db
