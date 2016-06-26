@@ -36,7 +36,10 @@
 				farmako5 : String
 				}
 			},
-	patient_file1 : String,
+		oikogeneiako : {
+			mhtera : String
+		},
+			patient_file1 : String,
 	patient_file2 : String
     });
 
