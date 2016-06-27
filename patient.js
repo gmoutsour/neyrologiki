@@ -341,7 +341,68 @@
 				},
 				periferikou_typou : {
 					check : Boolean,
-					shmeiwseis : String
+					shmeiwseis : String,
+				   
+				  mrc : {
+					f1 : String,
+					f2 : String,
+					f3 : String,
+					f4 : String,
+					f5 : String,
+					f6 : String,
+					f7 : String,
+					f8 : String,
+					f9 : String,
+					f10 : String,
+					f11 : String,
+					f12 : String,
+					f13 : String,
+					f14 : String,
+					f15 : String,
+					f16 : String,
+					f17 : String,
+					f18 : String,
+					f19 : String,
+					f20 : String,
+					f21 : String,
+					f22 : String,
+					f23 : String,
+					f24 : String,
+					f25 : String,
+					f26 : String,
+					f27 : String,
+					f28 : String,
+					f29 : String,
+					f30 : String,
+					f31 : String,
+					f32 : String,
+					f33 : String,
+					f34 : String,
+					f35 : String,
+					f36 : String,
+					f37 : String,
+					f38 : String,
+					f39 : String,
+					f40 : String,
+					f41 : String,
+					f42 : String,
+					f43 : String,
+					f44 : String,
+					f45 : String,
+					f46 : String,
+					f47 : String,
+					f48 : String,
+					f49 : String,
+					f50 : String,
+					f51 : String,
+					f52 : String,
+					f53 : String,
+					f54 : String,
+					f55 : String,
+					f56 : String
+
+				  }
+
 				}
 
 			},
@@ -486,7 +547,16 @@
 				pathologika2 : {
 					check : Boolean,
 					klimaka_polyneyropatheias_1 : Boolean,
-					klimaka_polyneyropatheias_2 : Boolean
+					klimaka_polyneyropatheias_2 : Boolean,
+					nsc : {
+						f1 : String,
+						f2 : String,
+						f3 : String,
+						f4 : String,
+						f5 : String
+					}
+					
+					
 				}
 			}
 		},
